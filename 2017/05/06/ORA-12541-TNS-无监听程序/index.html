@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ORA-12541:TNS:无监听程序 | 农永滔的博客</title>
+  
+  <meta name="keywords" content="hadoop,Spring,大数据,Java,nongyongtao,mybatis">
+  
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="农永滔的博客">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="undefined" />
+  <link rel="icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
+  
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7c0d3796d074be0957be656beaf84aca";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >农永滔的博客</a>
+				<div class='menu'>
+					<ul class='h-list'>
+            
+    					
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/">
+										<i class='fas fa-home fa-fw'></i>&nbsp;主页
+									</a>
+  							</li>
+        			
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/archives/">
+										<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+									</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+										<a class="nav  flat-box" href="/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-ORA-12541-TNS-无监听程序" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+      
+      <div class="meta" id="header-meta">
+        
+            <h1 class="title">ORA-12541:TNS:无监听程序</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2017-05-06
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </div>
+        
+
+        
+
+      </div>
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>这两天在做毕业设计，项目用到的是oracle数据库，由于之前用的都是mysql，oracle数据库的应用比较少。于是莫名奇妙的出现了个‘ORA-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务’，也是折腾了两天，无果，今天接着是‘ORA-12541:TNS:无监听程序’，在windows系统的cmd上不使用实例名连接倒是可以登录，但是无法进行正常的查询操作。今天按照网上某篇博客的教程，居然把这个问题解决了，关键的一步是 启动tnslsnr，然后问题就解决了。</p>
+<p>其实在今天电脑开始之后，我直接把360安全卫士关闭了，不排除oracle在开机 的时候某些服务被360拦截关闭的情况。</p>
+<h2 id="二、附上cmd的操作日志"><a href="#二、附上cmd的操作日志" class="headerlink" title="二、附上cmd的操作日志"></a>二、附上cmd的操作日志</h2><pre><code>C:\Users\Administrator&gt;sqlplus / as sysdba
+</code></pre><a id="more"></a>    
+<pre><code>SQL*Plus: Release 11.2.0.1.0 Production on 星期六 5月 6 09:23:15 2017
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL&gt; conn tokerr/tokerr
+已连接。
+SQL&gt;
+SQL&gt; select table_name from user_tables;
+
+TABLE_NAME
+------------------------------------------------------------
+TESTTABLE1
+TESTTABLE2
+TESTTABLE3
+TESTTABLE4
+TESTTABLE5
+
+SQL&gt; select * form TESTTABLE1;
+select * form TESTTABLE1
+         *
+第 1 行出现错误:
+ORA-00923: 未找到要求的 FROM 关键字
+
+
+SQL&gt; select * fROM TESTTABLE1;
+
+未选定行
+
+SQL&gt; select * fROM TESTTABLE2;
+
+未选定行
+
+SQL&gt; select * fROM TESTTABLE3;
+
+未选定行
+
+SQL&gt; exit
+从 Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options 断开
+
+C:\Users\Administrator&gt;sqlplus tokerr/tokerr@orcl
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期六 5月 6 09:27:17 2017
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+ERROR:
+ORA-12541: TNS: 无监听程序
+
+
+请输入用户名:
+C:\Users\Administrator&gt;
+
+C:\Users\Administrator&gt;sqlplus / as sysdba
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期六 5月 6 09:37:26 2017
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL&gt; startup
+ORA-01081: 无法启动已在运行的 ORACLE - 请首先关闭它
+SQL&gt; 从 Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options 断开
+
+C:\Users\Administrator&gt;lsnrctl status
+
+LSNRCTL for 64-bit Windows: Version 11.2.0.1.0 - Production on 06-5月 -2017 09:39:09
+
+Copyright (c) 1991, 2010, Oracle.  All rights reserved.
+
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1521)))
+TNS-12541: TNS: 无监听程序
+ TNS-12560: TNS: 协议适配器错误
+  TNS-00511: 无监听程序
+   64-bit Windows Error: 2: No such file or directory
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))
+TNS-12541: TNS: 无监听程序
+ TNS-12560: TNS: 协议适配器错误
+  TNS-00511: 无监听程序
+   64-bit Windows Error: 61: Unknown error
+
+C:\Users\Administrator&gt;lsnrctl start
+
+LSNRCTL for 64-bit Windows: Version 11.2.0.1.0 - Production on 06-5月 -2017 09:39:40
+
+Copyright (c) 1991, 2010, Oracle.  All rights reserved.
+
+启动tnslsnr: 请稍候...
+
+TNSLSNR for 64-bit Windows: Version 11.2.0.1.0 - Production
+系统参数文件为F:\Ora10InstantClient\listener.ora
+写入f:\oracledb\diag\tnslsnr\PC-20160512QTJL\listener\alert\log.xml的日志信息
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=\\.\pipe\EXTPROC1521ipc)))
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1521)))
+LISTENER 的 STATUS
+------------------------
+别名                      LISTENER
+版本                      TNSLSNR for 64-bit Windows: Version 11.2.0.1.0 - Production
+启动日期                  06-5月 -2017 09:39:46
+正常运行时间              0 天 0 小时 0 分 8 秒
+跟踪级别                  off
+安全性                    ON: Local OS Authentication
+SNMP                      OFF
+监听程序参数文件          F:\Ora10InstantClient\listener.ora
+监听程序日志文件          f:\oracledb\diag\tnslsnr\PC-20160512QTJL\listener\alert\log.xml
+监听端点概要...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=\\.\pipe\EXTPROC1521ipc)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+服务摘要..
+服务 &quot;CLRExtProc&quot; 包含 1 个实例。
+  实例 &quot;CLRExtProc&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+服务 &quot;orcl&quot; 包含 1 个实例。
+  实例 &quot;orcl&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+命令执行成功
+
+C:\Users\Administrator&gt;lsnrctl status
+
+LSNRCTL for 64-bit Windows: Version 11.2.0.1.0 - Production on 06-5月 -2017 09:41:30
+
+Copyright (c) 1991, 2010, Oracle.  All rights reserved.
+
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1521)))
+LISTENER 的 STATUS
+------------------------
+别名                      LISTENER
+版本                      TNSLSNR for 64-bit Windows: Version 11.2.0.1.0 - Production
+启动日期                  06-5月 -2017 09:39:46
+正常运行时间              0 天 0 小时 1 分 48 秒
+跟踪级别                  off
+安全性                    ON: Local OS Authentication
+SNMP                      OFF
+监听程序参数文件          F:\Ora10InstantClient\listener.ora
+监听程序日志文件          f:\oracledb\diag\tnslsnr\PC-20160512QTJL\listener\alert\log.xml
+监听端点概要...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=\\.\pipe\EXTPROC1521ipc)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+服务摘要..
+服务 &quot;CLRExtProc&quot; 包含 1 个实例。
+  实例 &quot;CLRExtProc&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+服务 &quot;orcl&quot; 包含 1 个实例。
+  实例 &quot;orcl&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+命令执行成功
+
+C:\Users\Administrator&gt;sqlplus tokerr/tokerr@orcl
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期六 5月 6 09:41:36 2017
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL&gt; select * from TESTTABLES;
+select * from TESTTABLES
+              *
+第 1 行出现错误:
+ORA-00942: 表或视图不存在
+
+
+SQL&gt; select * from TESTTABLE1;
+
+未选定行
+
+SQL&gt;
+</code></pre><h2 id="三、正文"><a href="#三、正文" class="headerlink" title="三、正文"></a>三、正文</h2><p>在用PL/SQL Developer连接数据库时出现<br>“ORA-12541:TNS:无监听程序”错误。</p>
+<h3 id="1、检查listener-log日志"><a href="#1、检查listener-log日志" class="headerlink" title="1、检查listener.log日志"></a>1、检查listener.log日志</h3><p>发现下面错误：</p>
+<pre><code>TNSLSNR for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 10:25:26
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+系统参数文件为D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+写入D:/oracle/product/10.2.0/db_1/network/log/listener.log的日志信息
+写入D:/oracle/product/10.2.0/db_1/network/trace/listener.trc的跟踪信息
+跟踪级别当前为0
+以 pid=1704 开始
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+监听该对象时出错: (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=0.5.0.5)(PORT=1521)))
+TNS-12545: 因目标主机或对象不存在, 连接失败
+TNS-12560: TNS: 协议适配器错误
+TNS-00515: 因目标主机或对象不存在, 连接失败
+32-bit Windows Error: 49: Unknown error
+不再监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+</code></pre><h3 id="2、查看Oracle的listener是否启动"><a href="#2、查看Oracle的listener是否启动" class="headerlink" title="2、查看Oracle的listener是否启动"></a>2、查看Oracle的listener是否启动</h3><pre><code>C:/Documents and Settings/mengzhaoliang&gt;lsnrctl status
+LSNRCTL for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 10:5
+0:44
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1)))
+TNS-12541: TNS: 无监听程序
+TNS-12560: TNS: 协议适配器错误
+TNS-00511: 无监听程序
+32-bit Windows Error: 2: No such file or directory
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=0.5.0.5)(PORT=1521)))
+TNS-12535: TNS: 操作超时
+TNS-12560: TNS: 协议适配器错误
+TNS-00505: 操作超时
+32-bit Windows Error: 60: Unknown error
+</code></pre><p>原来没有启动listener，用“lsnrctl start”命令也不能启动。</p>
+<pre><code>C:/Documents and Settings/mengzhaoliang&gt;lsnrctl start
+LSNRCTL for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 10:5
+2:16
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+启动tnslsnr: 请稍候...
+TNSLSNR for 32-bit Windows: Version 10.2.0.1.0 - Production
+系统参数文件为D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+写入D:/oracle/product/10.2.0/db_1/network/log/listener.log的日志信息
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+监听该对象时出错: (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=0.5.0.5)(PORT=1521))
+)
+TNS-12545: 因目标主机或对象不存在, 连接失败
+TNS-12560: TNS: 协议适配器错误
+TNS-00515: 因目标主机或对象不存在, 连接失败
+32-bit Windows Error: 49: Unknown error
+</code></pre><p>监听程序未能启动。请参阅上面的错误消息…</p>
+<h3 id="3、查看listener-ora的内容："><a href="#3、查看listener-ora的内容：" class="headerlink" title="3、查看listener.ora的内容："></a>3、查看listener.ora的内容：</h3><pre><code># listener.ora Network Configuration File: D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+# Generated by Oracle configuration tools.
+SID_LIST_LISTENER =
+(SID_LIST =
+(SID_DESC =
+(SID_NAME = PLSExtProc)
+(ORACLE_HOME = D:/oracle/product/10.2.0/db_1)
+(PROGRAM = extproc)
+)
+)
+LISTENER =
+(DESCRIPTION_LIST =
+(DESCRIPTION =
+(ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))
+(ADDRESS = (PROTOCOL = TCP)(HOST = 0.5.0.5)(PORT = 1521))
+)
+)
+</code></pre><p>原来本机的ip发生改变后，就出现了上述问题，改变数据库的监听ip地址:<br>把<code>(ADDRESS = (PROTOCOL = TCP)(HOST = 0.5.0.5)(PORT = 1521))</code><br>改成<code>(ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))</code><br>127.0.0.1：也就是目前数据库正在用的ip地址。</p>
+<h3 id="4、再次启动oracle的listener"><a href="#4、再次启动oracle的listener" class="headerlink" title="4、再次启动oracle的listener"></a>4、再次启动oracle的listener</h3><pre><code>C:/Documents and Settings/mengzhaoliang&gt;lsnrctl start
+LSNRCTL for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 10:5
+4:40
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+启动tnslsnr: 请稍候...
+TNSLSNR for 32-bit Windows: Version 10.2.0.1.0 - Production
+系统参数文件为D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+写入D:/oracle/product/10.2.0/db_1/network/log/listener.log的日志信息
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1)))
+LISTENER 的 STATUS
+------------------------
+别名                      LISTENER
+版本                      TNSLSNR for 32-bit Windows: Version 10.2.0.1.0 - Produ
+ction
+启动日期                  20-9月 -2008 10:54:41
+正常运行时间              0 天 0 小时 0 分 1 秒
+跟踪级别                  off
+安全性                    ON: Local OS Authentication
+SNMP                      OFF
+监听程序参数文件          D:/oracle/product/10.2.0/db_1/network/admin/listener.o
+ra
+监听程序日志文件          D:/oracle/product/10.2.0/db_1/network/log/listener.log
+监听端点概要...
+(DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+服务摘要..
+服务 &quot;PLSExtProc&quot; 包含 1 个例程。
+例程 &quot;PLSExtProc&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+</code></pre><p>命令执行成功</p>
+<p>启动已经成功，</p>
+<h3 id="5-再tnsnames-ora上添加上"><a href="#5-再tnsnames-ora上添加上" class="headerlink" title="5.再tnsnames.ora上添加上"></a>5.再tnsnames.ora上添加上</h3><pre><code>ORCL_127.0.0.1 =
+(DESCRIPTION =
+(ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+(CONNECT_DATA =
+(SERVER = DEDICATED)
+(SERVICE_NAME = orcl)
+)
+)
+</code></pre><p>6、再次用PL/SQL Developer再次连接数据库<br>出现下面错误：<br><strong>TNS-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务</strong><br>再次检查listener.log日志</p>
+<pre><code>20-9月 -2008 11:01:54 * (CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orcl)(CID=
+(PROGRAM=D:/plsql/plsqldev.exe)(HOST=RUIFEI-EF0ADC98)(USER=mengzhaoliang))) * (ADDRESS=
+(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1267)) * establish * orcl * 12514
+TNS-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务
+查看listener：
+C:/Documents and Settings/mengzhaoliang&gt;lsnrctl services
+LSNRCTL for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 11:1
+1:09
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1)))
+服务摘要..
+服务 &quot;PLSExtProc&quot; 包含 1 个例程。
+例程 &quot;PLSExtProc&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+处理程序:
+&quot;DEDICATED&quot; 已建立:0 已被拒绝:0
+LOCAL SERVER
+</code></pre><p>命令执行成功</p>
+<h3 id="7、用sqlplus也出现同样错误："><a href="#7、用sqlplus也出现同样错误：" class="headerlink" title="7、用sqlplus也出现同样错误："></a>7、用sqlplus也出现同样错误：</h3><pre><code>C:/Documents and Settings/mengzhaoliang&gt;sqlplusscott/mzl@ORCL_127.0.0.1
+SQL*Plus: Release 10.2.0.1.0 - Production on 星期六 9月 20 11:15:09 2008
+Copyright (c) 1982, 2005, Oracle. All rights reserved.
+ERROR:
+ORA-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务
+</code></pre><h3 id="8、查看listenser状态："><a href="#8、查看listenser状态：" class="headerlink" title="8、查看listenser状态："></a>8、查看listenser状态：</h3><pre><code>C:/Documents and Settings/mengzhaoliang&gt;lsnrctl status
+LSNRCTL for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -2008 11:2
+6:42
+Copyright (c) 1991, 2005, Oracle. All rights reserved.
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1)))
+LISTENER 的 STATUS
+------------------------
+别名                      LISTENER
+版本                      TNSLSNR for 32-bit Windows: Version 10.2.0.1.0 - Produ
+ction
+启动日期                  20-9月 -2008 11:24:33
+正常运行时间              0 天 0 小时 2 分 8 秒
+跟踪级别                  off
+安全性                    ON: Local OS Authentication
+SNMP                      OFF
+监听程序参数文件          D:/oracle/product/10.2.0/db_1/network/admin/listener.o
+ra
+监听程序日志文件          D:/oracle/product/10.2.0/db_1/network/log/listener.log
+监听端点概要...
+(DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(PIPENAME=//./pipe/EXTPROC1ipc)))
+(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+服务摘要..
+服务 &quot;PLSExtProc&quot; 包含 1 个例程。
+例程 &quot;PLSExtProc&quot;, 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+</code></pre><p>命令执行成功</p>
+<pre><code>C:/Documents and Settings/mengzhaoliang&gt;tnsping orcl
+TNS Ping Utility for 32-bit Windows: Version 10.2.0.1.0 - Production on 20-9月 -
+2008 11:27:43
+Copyright (c) 1997, 2005, Oracle. All rights reserved.
+已使用的参数文件:
+D:/oracle/product/10.2.0/db_1/network/admin/sqlnet.ora
+TNS-03505: 无法解析名称
+</code></pre><h3 id="9、查看sqlnet-ora内容："><a href="#9、查看sqlnet-ora内容：" class="headerlink" title="9、查看sqlnet.ora内容："></a>9、查看sqlnet.ora内容：</h3><pre><code># sqlnet.ora Network Configuration File: D:/oracle/product/10.2.0/db_1/network/admin/sqlnet.ora
+# Generated by Oracle configuration tools.
+# This file is actually generated by netca. But if customers choose to
+# install &quot;Software Only&quot;, this file wont exist and without the native
+# authentication, they will not be able to connect to the database on NT.
+SQLNET.AUTHENTICATION_SERVICES= (NTS)
+NAMES.DIRECTORY_PATH= (TNSNAMES, EZCONNECT)
+</code></pre><p>10.把listener.ora的内容：</p>
+<pre><code># listener.ora Network Configuration File: D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+# Generated by Oracle configuration tools.
+SID_LIST_LISTENER =
+(SID_LIST =
+(SID_DESC =
+      (SID_NAME = PLSExtProc)
+(ORACLE_HOME = D:/oracle/product/10.2.0/db_1)
+      (PROGRAM = extproc)
+)
+)
+LISTENER =
+(DESCRIPTION_LIST =
+(DESCRIPTION =
+(ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))
+(ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+)
+)
+
+改成下面的内容：
+# listener.ora Network Configuration File: D:/oracle/product/10.2.0/db_1/network/admin/listener.ora
+# Generated by Oracle configuration tools.
+SID_LIST_LISTENER =
+(SID_LIST =
+(SID_DESC =
+      (SID_NAME = orcl)
+(ORACLE_HOME = D:/oracle/product/10.2.0/db_1)
+#      (PROGRAM = extproc)
+)
+)
+LISTENER =
+(DESCRIPTION_LIST =
+(DESCRIPTION =
+(ADDRESS = (PROTOCOL = IPC)(KEY = orcl))
+(ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+)
+)
+</code></pre><h3 id="11、然后关闭、再启动listener"><a href="#11、然后关闭、再启动listener" class="headerlink" title="11、然后关闭、再启动listener"></a>11、然后关闭、再启动listener</h3><p>在cmd中执行“lsnrctl stop” 和“lsnrctl stop”命令，再次登陆正常！</p>
+<pre><code>C:/Documents and Settings/mengzhaoliang&gt;sqlplus scott/mzl@orcl
+SQL*Plus: Release 10.2.0.1.0 - Production on 星期六 9月 20 11:55:47 2008
+Copyright (c) 1982, 2005, Oracle. All rights reserved.
+
+连接到:
+Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production
+With the Partitioning, OLAP and Data Mining options
+SQL&gt;
+</code></pre><p>再次用PL/SQL Peveloper登陆就没有问题了。</p>
+<p>完毕!</p>
+<p>我通过以上步骤我的问题还没解决，然后重启了一下<code>OracleOraDb10g_home1TNSListener</code>服务就行了</p>
+<p><a href="http://blog.csdn.net/kobe_lzq/article/details/4846734" target="_blank" rel="external">原文链接</a></p>
+
+        </div>
+
+        <section class='meta' id="footer-meta">
+            <time class="time" itemprop="dateUpdated" datetime="2019-05-01T21:51:07+08:00" content="2019-05-01">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2019-05-01
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/数据库/">数据库</a>, <a class="tag" href="/tags/Oracle/">Oracle</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2017/05/05/序列化和反序列化的简单理解/" rel="prev" title="序列化和反序列化的简单理解">
+                                  
+                                      序列化和反序列化的简单理解
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/java/">java</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2017/05/06/关于使用ibator工具连接oracle数据库生成代码的使用问题/" rel="prev" title="使用ibator无法根据oracle数据库中的表结构产生代码[解决方法]">
+                                    
+                                        使用ibator无法根据oracle数据库中的表结构产生代码[解决方法]
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/mybatis/">mybatis</a>, <a class="tag" href="/tags/oracle/">oracle</a>, <a class="tag" href="/tags/ibator/">ibator</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://tokerr.github.io/2017/05/02/hibernate-validation实现后台校验/">validation实现后台校验;</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/05/05/序列化和反序列化的简单理解/">序列化和反序列化的简单理解</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/05/06/关于使用ibator工具连接oracle数据库生成代码的使用问题/">使用ibator无法根据oracle数据库中的表结构产生代码[解决方法]</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/05/07/mybatis连接oracle执行sql语句出现ORA-00904-invalid-identifier/">mybatis连接oracle执行sql语句出现ORA-00904: invalid identifier</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                <h4>
+                    <div style="cursor:pointer;width: 75px;" onclick="$('html, body').animate({scrollTop: $('#gitalk-container').offset().top  }, 500);">
+                        <i class="fas fa-comments fa-fw" aria-hidden="true" ></i>&nbsp;评论
+                    </div>
+                </h4>
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'ORA-12541:TNS:无监听程序',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+  <section class='m_widget author'>
+    
+      <div class='header'>
+        <img class='avatar' src='https://raw.githubusercontent.com/tokerr/markdownImage/master/images/head.jpeg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:nytom@foxmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/tokerr" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </section>
+
+
+    
+    
+        
+  <section class='m_widget announcement'>
+    <header class='header pure'>
+        <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告</div>
+    </header>
+    <div class='content pure'>
+      这是我的<b><a href="https://github.com/tokerr">GitHub</a></b>。
+    </div>
+  </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <header class='header pure'>
+        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    </header>
+    <div class='content pure'>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <header class="header pure">
+            <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        </header>
+        <div class='content pure'>
+            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 16.5px; color: #888">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+        </div>
+    </section>
+
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='wrapper'><a class="s-toc rightBtn" title="固定到顶部" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class='content pure'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、问题描述"><span class="toc-text">一、问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、附上cmd的操作日志"><span class="toc-text">二、附上cmd的操作日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、正文"><span class="toc-text">三、正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、检查listener-log日志"><span class="toc-text">1、检查listener.log日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、查看Oracle的listener是否启动"><span class="toc-text">2、查看Oracle的listener是否启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、查看listener-ora的内容："><span class="toc-text">3、查看listener.ora的内容：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、再次启动oracle的listener"><span class="toc-text">4、再次启动oracle的listener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-再tnsnames-ora上添加上"><span class="toc-text">5.再tnsnames.ora上添加上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、用sqlplus也出现同样错误："><span class="toc-text">7、用sqlplus也出现同样错误：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、查看listenser状态："><span class="toc-text">8、查看listenser状态：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、查看sqlnet-ora内容："><span class="toc-text">9、查看sqlnet.ora内容：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、然后关闭、再启动listener"><span class="toc-text">11、然后关闭、再启动listener</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+    
+    
+        <section class='m_widget links'>
+    <header class='header pure'>
+        <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+        
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:nytom@foxmail.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【农永滔的博客】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+        
+    </header>
+    <div class='content pure'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" title="https://tokerr.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://tokerr.github.io">
+                    <div class='name'>
+                        
+                            <img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+                        
+                        &nbsp;&nbsp;农永滔的博客
+                    </div>
+                </a></li>
+            
+                <li><a class="flat-box" title="https://skydh.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://skydh.github.io">
+                    <div class='name'>
+                        
+                            <img src="http://t2.hddhhn.com/uploads/tu/201811/9999/84695947e4.jpg">
+                        
+                        &nbsp;&nbsp;董航的博客
+                    </div>
+                </a></li>
+            
+        </ul>
+    </div>
+</section>
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:nytom@foxmail.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/tokerr" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>欢迎访问我的博客，一个对世界充满好奇的程序猿。</div>
+    <!--
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+    -->
+    <!--评论系统-->
+        <!-- Gitalk 评论 start  -->
+        <!-- Link Gitalk 的支持文件  -->
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+        !function(n){"use strict";function t(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}function r(n,t){return n<<t|n>>>32-t}function e(n,e,o,u,c,f){return t(r(t(t(e,n),t(u,f)),c),o)}function o(n,t,r,o,u,c,f){return e(t&r|~t&o,n,t,u,c,f)}function u(n,t,r,o,u,c,f){return e(t&o|r&~o,n,t,u,c,f)}function c(n,t,r,o,u,c,f){return e(t^r^o,n,t,u,c,f)}function f(n,t,r,o,u,c,f){return e(r^(t|~o),n,t,u,c,f)}function i(n,r){n[r>>5]|=128<<r%32,n[14+(r+64>>>9<<4)]=r;var e,i,a,d,h,l=1732584193,g=-271733879,v=-1732584194,m=271733878;for(e=0;e<n.length;e+=16)i=l,a=g,d=v,h=m,g=f(g=f(g=f(g=f(g=c(g=c(g=c(g=c(g=u(g=u(g=u(g=u(g=o(g=o(g=o(g=o(g,v=o(v,m=o(m,l=o(l,g,v,m,n[e],7,-680876936),g,v,n[e+1],12,-389564586),l,g,n[e+2],17,606105819),m,l,n[e+3],22,-1044525330),v=o(v,m=o(m,l=o(l,g,v,m,n[e+4],7,-176418897),g,v,n[e+5],12,1200080426),l,g,n[e+6],17,-1473231341),m,l,n[e+7],22,-45705983),v=o(v,m=o(m,l=o(l,g,v,m,n[e+8],7,1770035416),g,v,n[e+9],12,-1958414417),l,g,n[e+10],17,-42063),m,l,n[e+11],22,-1990404162),v=o(v,m=o(m,l=o(l,g,v,m,n[e+12],7,1804603682),g,v,n[e+13],12,-40341101),l,g,n[e+14],17,-1502002290),m,l,n[e+15],22,1236535329),v=u(v,m=u(m,l=u(l,g,v,m,n[e+1],5,-165796510),g,v,n[e+6],9,-1069501632),l,g,n[e+11],14,643717713),m,l,n[e],20,-373897302),v=u(v,m=u(m,l=u(l,g,v,m,n[e+5],5,-701558691),g,v,n[e+10],9,38016083),l,g,n[e+15],14,-660478335),m,l,n[e+4],20,-405537848),v=u(v,m=u(m,l=u(l,g,v,m,n[e+9],5,568446438),g,v,n[e+14],9,-1019803690),l,g,n[e+3],14,-187363961),m,l,n[e+8],20,1163531501),v=u(v,m=u(m,l=u(l,g,v,m,n[e+13],5,-1444681467),g,v,n[e+2],9,-51403784),l,g,n[e+7],14,1735328473),m,l,n[e+12],20,-1926607734),v=c(v,m=c(m,l=c(l,g,v,m,n[e+5],4,-378558),g,v,n[e+8],11,-2022574463),l,g,n[e+11],16,1839030562),m,l,n[e+14],23,-35309556),v=c(v,m=c(m,l=c(l,g,v,m,n[e+1],4,-1530992060),g,v,n[e+4],11,1272893353),l,g,n[e+7],16,-155497632),m,l,n[e+10],23,-1094730640),v=c(v,m=c(m,l=c(l,g,v,m,n[e+13],4,681279174),g,v,n[e],11,-358537222),l,g,n[e+3],16,-722521979),m,l,n[e+6],23,76029189),v=c(v,m=c(m,l=c(l,g,v,m,n[e+9],4,-640364487),g,v,n[e+12],11,-421815835),l,g,n[e+15],16,530742520),m,l,n[e+2],23,-995338651),v=f(v,m=f(m,l=f(l,g,v,m,n[e],6,-198630844),g,v,n[e+7],10,1126891415),l,g,n[e+14],15,-1416354905),m,l,n[e+5],21,-57434055),v=f(v,m=f(m,l=f(l,g,v,m,n[e+12],6,1700485571),g,v,n[e+3],10,-1894986606),l,g,n[e+10],15,-1051523),m,l,n[e+1],21,-2054922799),v=f(v,m=f(m,l=f(l,g,v,m,n[e+8],6,1873313359),g,v,n[e+15],10,-30611744),l,g,n[e+6],15,-1560198380),m,l,n[e+13],21,1309151649),v=f(v,m=f(m,l=f(l,g,v,m,n[e+4],6,-145523070),g,v,n[e+11],10,-1120210379),l,g,n[e+2],15,718787259),m,l,n[e+9],21,-343485551),l=t(l,i),g=t(g,a),v=t(v,d),m=t(m,h);return[l,g,v,m]}function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}function d(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}function h(n){return a(i(d(n),8*n.length))}function l(n,t){var r,e,o=d(n),u=[],c=[];for(u[15]=c[15]=void 0,o.length>16&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(d(t)),512+8*t.length),a(i(c.concat(e),640))}function g(n){var t,r,e="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),e+="0123456789abcdef".charAt(t>>>4&15)+"0123456789abcdef".charAt(15&t);return e}function v(n){return unescape(encodeURIComponent(n))}function m(n){return h(v(n))}function p(n){return g(m(n))}function s(n,t){return l(v(n),v(t))}function C(n,t){return g(s(n,t))}function A(n,t,r){return t?r?s(t,n):C(t,n):r?m(n):p(n)}"function"==typeof define&&define.amd?define(function(){return A}):"object"==typeof module&&module.exports?module.exports=A:n.md5=A}(this);
+            var gitalk = new Gitalk({
+        		clientID: 'a7488698e2bf8aa0b134',
+        		clientSecret: '6edd169757d428197eb48c088bb8a12e8c09ebd6',
+        		repo: 'blog',
+        		owner: 'tokerr',
+        		admin: ['tokerr'],
+        		id: md5(window.location.pathname),
+        		distractionFreeMode: true
+            });
+            gitalk.render('gitalk-container');
+        </script>
+        <!-- Gitalk end -->
+        <br>
+        <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题
+        <!--
+        ，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+        -->
+        </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

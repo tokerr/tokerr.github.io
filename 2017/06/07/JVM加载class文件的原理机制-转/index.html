@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>JVM加载class文件的原理机制[转] | 农永滔的博客</title>
+  
+  <meta name="keywords" content="hadoop,Spring,大数据,Java,nongyongtao,mybatis">
+  
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="农永滔的博客">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="undefined" />
+  <link rel="icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
+  
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7c0d3796d074be0957be656beaf84aca";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >农永滔的博客</a>
+				<div class='menu'>
+					<ul class='h-list'>
+            
+    					
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/">
+										<i class='fas fa-home fa-fw'></i>&nbsp;主页
+									</a>
+  							</li>
+        			
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/archives/">
+										<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+									</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+										<a class="nav  flat-box" href="/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-JVM加载class文件的原理机制-转" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+      
+      <div class="meta" id="header-meta">
+        
+            <h1 class="title">JVM加载class文件的原理机制[转]</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2017-06-07
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </div>
+        
+
+        
+
+      </div>
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>JVM加载class文件的原理机制</p>
+<h2 id="一、摘要"><a href="#一、摘要" class="headerlink" title="一、摘要"></a>一、摘要</h2><p>当执行 java <em>*</em>.class 的时候， java.exe 会帮助我们找到 JRE ，接着找到位于 JRE 内部的 jvm.dll ，这才是真正的 Java 虚拟机器 , 最后加载动态库，激活 Java 虚拟机器。虚拟机器激活以后，会先做一些初始化的动作，比如说读取系统参数等。一旦初始化动作完成之后，就会产生第一个类加载器―― Bootstrap Loader ， Bootstrap Loader 是由 C++ 所撰写而成，这个 Bootstrap Loader 所做的初始工作中，除了一些基本的初始化动作之外，最重要的就是加载 Launcher.java 之中的 ExtClassLoader ，并设定其 Parent 为 null ，代表其父加载器为 BootstrapLoader 。然后 Bootstrap Loader 再要求加载 Launcher.java 之中的 AppClassLoader ，并设定其 Parent 为之前产生的 ExtClassLoader 实体。这两个加载器都是以静态类的形式存在的。这里要请大家注意的是， Launcher$ExtClassLoader.class 与 Launcher$AppClassLoader.class 都是由 Bootstrap Loader 所加载，所以 Parent 和由哪个类加载器加载没有关系。</p>
+<h2 id="二、JVM-简介"><a href="#二、JVM-简介" class="headerlink" title="二、JVM 简介"></a>二、JVM 简介</h2><p>是我们Javase 的最基本功底了，刚开始学Java 的时候，一般都是从“Hello World ”开始的，然后会写个复杂点class ，然后再找一些开源框架，比如Spring ，Hibernate 等等，再然后就开发企业级的应用，比如网站、企业内部应用、实时交易系统等等，直到某一天突然发现做的系统咋就这么慢呢，而且时不时还来个内存溢出什么的，今天是交易系统报了StackOverflowError ，明天是网站系统报了个OutOfMemoryError ，这种错误又很难重现，只有分析Javacore 和dump 文件，运气好点还能分析出个结果，运行遭的点，就直接去庙里烧香吧！每天接客户的电话都是战战兢兢的，生怕再出什么幺蛾子了。我想Java 做的久一点的都有这样的经历，那这些问题的最终根结是在哪呢？—— JVM 。</p>
+<p>JVM 全称是Java Virtual Machine ，Java 虚拟机，也就是在计算机上再虚拟一个计算机，这和我们使用 VMWare不一样，那个虚拟的东西你是可以看到的，这个JVM 你是看不到的，它存在内存中。我们知道计算机的基本构成是：运算器、控制器、存储器、输入和输出设备，那这个JVM 也是有这成套的元素，运算器是当然是交给硬件CPU 还处理了，只是为了适应“一次编译，随处运行”的情况，需要做一个翻译动作，于是就用了JVM 自己的命令集，这与汇编的命令集有点类似，每一种汇编命令集针对一个系列的CPU ，比如8086 系列的汇编也是可以用在8088 上的，但是就不能跑在8051 上，而JVM 的命令集则是可以到处运行的，因为JVM 做了翻译，根据不同的CPU ，翻译成不同的机器语言。</p>
+<p>JVM 中我们最需要深入理解的就是它的存储部分，存储？硬盘？NO ，NO ， JVM 是一个内存中的虚拟机，那它的存储就是内存了，我们写的所有类、常量、变量、方法都在内存中，这决定着我们程序运行的是否健壮、是否高效，接下来的部分就是重点介绍之一。<br><a id="more"></a></p>
+<h2 id="三、JVM-的组成部分"><a href="#三、JVM-的组成部分" class="headerlink" title="三、JVM 的组成部分"></a>三、JVM 的组成部分</h2><p>我们先把JVM 这个虚拟机画出来，如下图所示：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/JVM%E5%8A%A0%E8%BD%BDclass%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6-%E8%BD%AC/1.png" alt=""></p>
+<p>从这个图中可以看到，JVM 是运行在操作系统之上的，它与硬件没有直接的交互。我们再来看下JVM 有哪些组成部分，如下图所示：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/JVM%E5%8A%A0%E8%BD%BDclass%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6-%E8%BD%AC/2.png" alt=""></p>
+<p>该图参考了网上广为流传的JVM 构成图，大家看这个图，整个JVM 分为四部分：</p>
+<h3 id="Class-Loader-类加载器"><a href="#Class-Loader-类加载器" class="headerlink" title="Class Loader 类加载器"></a>Class Loader 类加载器</h3><p>类加载器的作用是加载类文件到内存，比如编写一个HelloWord.java 程序，然后通过javac 编译成class 文件，那怎么才能加载到内存中被执行呢？Class Loader 承担的就是这个责任，那不可能随便建立一个.class 文件就能被加载的，Class Loader 加载的class 文件是有格式要求，在《JVM Specification 》中式这样定义Class 文件的结构：</p>
+<pre><code>ClassFile {
+  u4 magic;
+  u2 minor_version;
+   u2 major_version;
+  u2 constant_pool_count;
+  cp_info constant_pool[constant_pool_count-1];
+  u2 access_flags;
+  u2 this_class;
+  u2 super_class;
+  u2 interfaces_count;
+  u2 interfaces[interfaces_count];
+  u2 fields_count;
+  field_info fields[fields_count];
+  u2 methods_count;
+  method_info methods[methods_count];
+  u2 attributes_count;
+  attribute_info attributes[attributes_count];
+}
+</code></pre><p>需要详细了解的话，可以仔细阅读《JVM Specification 》的第四章“The class File Format ”，这里不再详细说明。<br>友情提示：Class Loader 只管加载，只要符合文件结构就加载，至于说能不能运行，则不是它负责的，那是由Execution Engine 负责的。</p>
+<h3 id="Execution-Engine-执行引擎"><a href="#Execution-Engine-执行引擎" class="headerlink" title="Execution Engine 执行引擎"></a>Execution Engine 执行引擎</h3><p>执行引擎也叫做解释器(Interpreter) ，负责解释命令，提交操作系统执行。</p>
+<h3 id="Native-Interface-本地接口"><a href="#Native-Interface-本地接口" class="headerlink" title="Native Interface 本地接口"></a>Native Interface 本地接口</h3><p>本地接口的作用是融合不同的编程语言为Java 所用，它的初衷是融合C/C++ 程序，Java 诞生的时候是C/C++ 横行的时候，要想立足，必须有一个聪明的、睿智的调用C/C++ 程序，于是就在内存中专门开辟了一块区域处理标记为native 的代码，它的具体做法是Native Method Stack 中登记native 方法，在Execution Engine 执行时加载native libraies 。目前该方法使用的是越来越少了，除非是与硬件有关的应用，比如通过Java 程序驱动打印机，或者Java 系统管理生产设备，在企业级应用中已经比较少见，因为现在的异构领域间的通信很发达，比如可以使用Socket 通信，也可以使用Web Service 等等，不多做介绍。</p>
+<h3 id="Runtime-data-area-运行数据区"><a href="#Runtime-data-area-运行数据区" class="headerlink" title="Runtime data area 运行数据区"></a>Runtime data area 运行数据区</h3><p>运行数据区是整个JVM 的重点。我们所有写的程序都被加载到这里，之后才开始运行，Java 生态系统如此的繁荣，得益于该区域的优良自治，下一章节详细介绍之。</p>
+<p>&emsp;&emsp;整个JVM 框架由加载器加载文件，然后执行器在内存中处理数据，需要与异构系统交互是可以通过本地接口进行，瞧，一个完整的系统诞生了！</p>
+<h2 id="三、JVM加载class文件的原理机制"><a href="#三、JVM加载class文件的原理机制" class="headerlink" title="三、JVM加载class文件的原理机制"></a>三、JVM加载class文件的原理机制</h2><ol>
+<li>Java中的所有类，必须被装载到jvm中才能运行，这个装载工作是由jvm中的类装载器完成的,类装载器所做的工作实质是把类文件从硬盘读取到内存中 </li>
+</ol>
+<ol>
+<li>java中的类大致分为三种：<br><br> 1.系统类 <br><br> 2.扩展类 <br><br> 3.由程序员自定义的类 <br></li>
+</ol>
+<ol>
+<li>类装载方式，有两种 <br><br> 1.隐式装载， 程序在运行过程中当碰到通过new 等方式生成对象时，隐式调用类装载器加载对应的类到jvm中<br><br> 2.显式装载， 通过class.forname()等方法，显式加载需要的类<br><br>隐式加载与显式加载的区别，两者本质是一样? </li>
+</ol>
+<ol>
+<li>类加载的动态性体现 <br><br>&emsp;&emsp;一个应用程序总是由n多个类组成，Java程序启动时，并不是一次把所有的类全部加载后再运行，它总是先把保证程序运行的基础类一次性加载到jvm中，其它类等到jvm用到的时候再加载，这样的好处是节省了内存的开销，因为java最早就是为嵌入式系统而设计的，内存宝贵，这是一种可以理解的机制，而用到时再加载这也是java动态性的一种体现 </li>
+</ol>
+<ol>
+<li><p>java类装载器 <br><br>Java中的类装载器实质上也是类，功能是把类载入jvm中，值得注意的是jvm的类装载器并不是一个，而是三个，层次结构如下：<br> </p>
+<p> Bootstrap Loader  - 负责加载系统类 <br><br> &emsp;&emsp;&emsp;&emsp;| <br><br> &emsp;&emsp;- - ExtClassLoader  - 负责加载扩展类<br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | <br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- - AppClassLoader  - 负责加载应用类<br>  </p>
+<p> &emsp;&emsp;为什么要有三个类加载器，一方面是分工，各自负责各自的区块，另一方面为了实现委托模型，下面会谈到该模型 </p>
+</li>
+</ol>
+<ol>
+<li>类加载器之间是如何协调工作的<br>&emsp;&emsp;前面说了，java中有三个类加载器，问题就来了，碰到一个类需要加载时，它们之间是如何协调工作的，即java是如何区分一个类该由哪个类加载器来完成呢。<br><br>&emsp;&emsp;在这里java采用了委托模型机制，这个机制简单来讲，就是“类装载器有载入类的需求时，会先请示其Parent使用其搜索路径帮忙载入，如果Parent 找不到,那么才由自己依照自己的搜索路径搜索类”，注意喔，这句话具有递归性</li>
+</ol>
+<p>Java代码  </p>
+<pre><code>1. /**  
+2.  * @author Jamson Huang  
+3.  *  
+4.  */   
+5. public   class  TestClass {  
+6.   
+7.     /**  
+8.      * @param args  
+9.      */   
+10.     public   static   void  main(String[] args)   throws  Exception{  
+11.         //调用class加载器   
+12.         ClassLoader cl = TestClass.class .getClassLoader();  
+13.         System.out.println(cl);  
+14.         //调用上一层Class加载器   
+15.         ClassLoader clParent = cl.getParent();  
+16.         System.out.println(clParent);  
+17.         //调用根部Class加载器   
+18.         ClassLoader clRoot = clParent.getParent();  
+19.         System.out.println(clRoot);  
+20.           
+21.     }  
+22.   
+23. }  
+</code></pre><p>Result代码  </p>
+<pre><code>1. Run， Console中出现的log信息如下：  
+2. sun.misc.Launcher$AppClassLoader@7259da  
+3. sun.misc.Launcher$ExtClassLoader@16930e2  
+4. null  
+</code></pre><p>&emsp;&emsp;可以看出TestClass是由AppClassLoader加载器加载的AppClassLoader的Parent 加载器是ExtClassLoader但是ExtClassLoader的Parent为 null 是怎么回事呵，朋友们留意的话，前面有提到Bootstrap Loader是用C++语言写的,依java的观点来看，逻辑上并不存在Bootstrap Loader的类实体，所以在java程序代码里试图打印出其内容时，我们就会看到输出为null <br><br><em>【注：以下内容大部分引用java深度历险】</em> <br><br>&emsp;&emsp;弄明白了上面的示例，接下来直接进入类装载的委托模型实例，写两个文件，如下：<br><br>Java代码  </p>
+<pre><code>1. /**  
+2.  * @author Jamson Huang  
+3.  *  
+4.  */   
+5. public   class  Test1 {  
+6.   
+7.     /**  
+8.      * @param args  
+9.      */   
+10.     public   static   void  main(String[] args) throws  Exception {  
+11.         System.out.println(Test1.class .getClassLoader());  
+12.           
+13.         Test2 test2 = new  Test2();  
+14.           
+15.         test2.print();  
+16.     }  
+17.   
+18. }  
+19. /**  
+20.  * @author Jamson Huang  
+21.  *  
+22.  */   
+23. public   class  Test2 {  
+24.     public   void  print(){  
+25.         System.out.println(Test2.class );  
+26.         System.out.println(this .getClass());  
+27.         System.out.println(Test2.class .getClassLoader());  
+28.     }  
+29. }  
+</code></pre><p>Result代码  </p>
+<pre><code>1. Run,Console出现log如下：  
+2. sun.misc.Launcher$AppClassLoader@7259da  
+3. class com.java.test.Test2  
+4. class com.java.test.Test2  
+5. sun.misc.Launcher$AppClassLoader@7259da  
+</code></pre><ol>
+<li>7.预先加载与依需求加载 </li>
+</ol>
+<p>&emsp;&emsp;Java 运行环境为了优化系统，提高程序的执行速度，在 JRE 运行的开始会将 Java 运行所需要的基本类采用预先加载（ pre-loading ）的方法全部加载要内存当中，因为这些单元在 Java 程序运行的过程当中经常要使用的，主要包括 JRE 的 rt.jar 文件里面所有的 .class 文件。 <br><br>&emsp;&emsp;当 java.exe 虚拟机开始运行以后，它会找到安装在机器上的 JRE 环境，然后把控制权交给 JRE ， JRE 的类加载器会将 lib 目录下的 rt.jar 基础类别文件库加载进内存，这些文件是 Java 程序执行所必须的，所以系统在开始就将这些文件加载，避免以后的多次 IO 操作，从而提高程序执行效率。 </p>
+<p>图（ 2 ）我们可以看到多个基础类被加载,java.lang.Object,java.io.Serializable 等等。<br><br>&emsp;&emsp;相对于预先加载，我们在程序中需要使用自己定义的类的时候就要使用依需求加载方法（ load-on-demand ），就是在 Java 程序需要用到的时候再加载，以减少内存的消耗，因为 Java 语言的设计初衷就是面向嵌入式领域的。 </p>
+<ol>
+<li>8.自定义类加载机制 </li>
+</ol>
+<p>&emsp;&emsp;之前我们都是调用系统的类加载器来实现加载的，其实我们是可以自己定义类加载器的。利用 Java 提供的 java.net.URLClassLoader 类就可以实现。下面我们看一段范例： </p>
+<p>Java代码  </p>
+<pre><code>1. try {   
+2. URL url = new  URL( &quot;file:/d:/test/lib/&quot; );   
+3. URLClassLoader urlCL = new  URLClassLoader( new  URL[]{url});   
+4. Class c = urlCL.loadClass(&quot;TestClassA&quot; );   
+5. TestClassA object = (TestClassA)c.newInstance();   
+6. object.method();   
+7. }catch (Exception e){   
+8. e.printStackTrace();   
+9. }   
+</code></pre><p>&emsp;&emsp;我们通过自定义的类加载器实现了 TestClassA 类的加载并调用 method （）方法。分析一下这个程序：首先定义 URL 指定类加载器从何处加载类， URL 可以指向网际网络上的任何位置，也可以指向我们计算机里的文件系统 ( 包含 JAR 文件 ) 。上述范例当中我们从 file:/d:/test/lib/ 处寻找类；然后定义 URLClassLoader 来加载所需的类，最后即可使用该实例了。 </p>
+<ol>
+<li>9.类加载器的阶层体系 </li>
+</ol>
+<p>讨论了这么多以后，接下来我们仔细研究一下 Java 的类加载器的工作原理： <br><br>当执行 java <em>*</em>.class 的时候， java.exe 会帮助我们找到 JRE ，接着找到位于 JRE 内部的 jvm.dll ，这才是真正的 Java 虚拟机器 , 最后加载动态库，激活 Java 虚拟机器。虚拟机器激活以后，会先做一些初始化的动作，比如说读取系统参数等。一旦初始化动作完成之后，就会产生第一个类加载器―― Bootstrap Loader ， Bootstrap Loader 是由 C++ 所撰写而成，这个 Bootstrap Loader 所做的初始工作中，除了一些基本的初始化动作之外，最重要的就是加载 Launcher.java 之中的 ExtClassLoader ，并设定其 Parent 为 null ，代表其父加载器为 BootstrapLoader 。然后 Bootstrap Loader 再要求加载 Launcher.java 之中的 AppClassLoader ，并设定其 Parent 为之前产生的 ExtClassLoader 实体。这两个加载器都是以静态类的形式存在的。这里要请大家注意的是， Launcher$ExtClassLoader.class 与 Launcher$AppClassLoader.class 都是由 Bootstrap Loader 所加载，所以 Parent 和由哪个类加载器加载没有关系。<br></p>
+<p>下面的图形可以表示三者之间的关系： <br><br>BootstrapLoader &lt;—(Extends)—-AppClassLoader &lt;—(Extends)—-ExtClassLoader<br> </p>
+<p>这三个加载器就构成我们的 Java 类加载体系。他们分别从以下的路径寻找程序所需要的类： <br></p>
+<p>BootstrapLoader ： sun.boot.class.path <br><br>ExtClassLoader: java.ext.dirs <br><br>AppClassLoader: java.class.path <br></p>
+<p>这三个系统参量可以通过 System.getProperty() 函数得到具体对应的路径。大家可以自己编程实现查看具体的路径。</p>
+<p><a href="http://samuschen.iteye.com/blog/1119539" target="_blank" rel="external">原文连接</a></p>
+
+        </div>
+
+        <section class='meta' id="footer-meta">
+            <time class="time" itemprop="dateUpdated" datetime="2019-05-01T21:51:07+08:00" content="2019-05-01">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2019-05-01
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/jvm/">jvm</a>, <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/javase/">javase</a>, <a class="tag" href="/tags/java虚拟机/">java虚拟机</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2017/06/06/实现Set或者List集合的升-降-排序（实现Comparable接口的方式）/" rel="prev" title="实现Set或者List集合的升(降)排序（实现Comparator接口的方式）">
+                                  
+                                      实现Set或者List集合的升(降)排序（实现Comparator接口的方式）
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/集合/">集合</a>, <a class="tag" href="/tags/Collection/">Collection</a>, <a class="tag" href="/tags/升序，降序/">升序，降序</a>, <a class="tag" href="/tags/Set/">Set</a>, <a class="tag" href="/tags/List/">List</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2017/06/22/子查询的方式实现sql语句的先排序后分组/" rel="prev" title="子查询的方式实现sql语句的先排序后分组">
+                                    
+                                        子查询的方式实现sql语句的先排序后分组
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/sql/">sql</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://tokerr.github.io/2017/06/04/String类型两种创建对象的方式的内存分配/">String类型两种创建对象的方式的内存分配</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/06/06/实现Set或者List集合的升-降-排序（实现Comparable接口的方式）/">实现Set或者List集合的升(降)排序（实现Comparator接口的方式）</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/06/22/子查询的方式实现sql语句的先排序后分组/">子查询的方式实现sql语句的先排序后分组</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/07/05/对赋值语句中short类型转换的理解/">对赋值语句中short类型转换的理解[转]</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                <h4>
+                    <div style="cursor:pointer;width: 75px;" onclick="$('html, body').animate({scrollTop: $('#gitalk-container').offset().top  }, 500);">
+                        <i class="fas fa-comments fa-fw" aria-hidden="true" ></i>&nbsp;评论
+                    </div>
+                </h4>
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'JVM加载class文件的原理机制[转]',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+  <section class='m_widget author'>
+    
+      <div class='header'>
+        <img class='avatar' src='https://raw.githubusercontent.com/tokerr/markdownImage/master/images/head.jpeg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:nytom@foxmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/tokerr" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </section>
+
+
+    
+    
+        
+  <section class='m_widget announcement'>
+    <header class='header pure'>
+        <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告</div>
+    </header>
+    <div class='content pure'>
+      这是我的<b><a href="https://github.com/tokerr">GitHub</a></b>。
+    </div>
+  </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <header class='header pure'>
+        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    </header>
+    <div class='content pure'>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <header class="header pure">
+            <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        </header>
+        <div class='content pure'>
+            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 16.5px; color: #888">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+        </div>
+    </section>
+
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='wrapper'><a class="s-toc rightBtn" title="固定到顶部" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class='content pure'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、摘要"><span class="toc-text">一、摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、JVM-简介"><span class="toc-text">二、JVM 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、JVM-的组成部分"><span class="toc-text">三、JVM 的组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-Loader-类加载器"><span class="toc-text">Class Loader 类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Execution-Engine-执行引擎"><span class="toc-text">Execution Engine 执行引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Native-Interface-本地接口"><span class="toc-text">Native Interface 本地接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime-data-area-运行数据区"><span class="toc-text">Runtime data area 运行数据区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、JVM加载class文件的原理机制"><span class="toc-text">三、JVM加载class文件的原理机制</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+    
+    
+        <section class='m_widget links'>
+    <header class='header pure'>
+        <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+        
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:nytom@foxmail.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【农永滔的博客】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+        
+    </header>
+    <div class='content pure'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" title="https://tokerr.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://tokerr.github.io">
+                    <div class='name'>
+                        
+                            <img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+                        
+                        &nbsp;&nbsp;农永滔的博客
+                    </div>
+                </a></li>
+            
+                <li><a class="flat-box" title="https://skydh.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://skydh.github.io">
+                    <div class='name'>
+                        
+                            <img src="http://t2.hddhhn.com/uploads/tu/201811/9999/84695947e4.jpg">
+                        
+                        &nbsp;&nbsp;董航的博客
+                    </div>
+                </a></li>
+            
+        </ul>
+    </div>
+</section>
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:nytom@foxmail.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/tokerr" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>欢迎访问我的博客，一个对世界充满好奇的程序猿。</div>
+    <!--
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+    -->
+    <!--评论系统-->
+        <!-- Gitalk 评论 start  -->
+        <!-- Link Gitalk 的支持文件  -->
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+        !function(n){"use strict";function t(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}function r(n,t){return n<<t|n>>>32-t}function e(n,e,o,u,c,f){return t(r(t(t(e,n),t(u,f)),c),o)}function o(n,t,r,o,u,c,f){return e(t&r|~t&o,n,t,u,c,f)}function u(n,t,r,o,u,c,f){return e(t&o|r&~o,n,t,u,c,f)}function c(n,t,r,o,u,c,f){return e(t^r^o,n,t,u,c,f)}function f(n,t,r,o,u,c,f){return e(r^(t|~o),n,t,u,c,f)}function i(n,r){n[r>>5]|=128<<r%32,n[14+(r+64>>>9<<4)]=r;var e,i,a,d,h,l=1732584193,g=-271733879,v=-1732584194,m=271733878;for(e=0;e<n.length;e+=16)i=l,a=g,d=v,h=m,g=f(g=f(g=f(g=f(g=c(g=c(g=c(g=c(g=u(g=u(g=u(g=u(g=o(g=o(g=o(g=o(g,v=o(v,m=o(m,l=o(l,g,v,m,n[e],7,-680876936),g,v,n[e+1],12,-389564586),l,g,n[e+2],17,606105819),m,l,n[e+3],22,-1044525330),v=o(v,m=o(m,l=o(l,g,v,m,n[e+4],7,-176418897),g,v,n[e+5],12,1200080426),l,g,n[e+6],17,-1473231341),m,l,n[e+7],22,-45705983),v=o(v,m=o(m,l=o(l,g,v,m,n[e+8],7,1770035416),g,v,n[e+9],12,-1958414417),l,g,n[e+10],17,-42063),m,l,n[e+11],22,-1990404162),v=o(v,m=o(m,l=o(l,g,v,m,n[e+12],7,1804603682),g,v,n[e+13],12,-40341101),l,g,n[e+14],17,-1502002290),m,l,n[e+15],22,1236535329),v=u(v,m=u(m,l=u(l,g,v,m,n[e+1],5,-165796510),g,v,n[e+6],9,-1069501632),l,g,n[e+11],14,643717713),m,l,n[e],20,-373897302),v=u(v,m=u(m,l=u(l,g,v,m,n[e+5],5,-701558691),g,v,n[e+10],9,38016083),l,g,n[e+15],14,-660478335),m,l,n[e+4],20,-405537848),v=u(v,m=u(m,l=u(l,g,v,m,n[e+9],5,568446438),g,v,n[e+14],9,-1019803690),l,g,n[e+3],14,-187363961),m,l,n[e+8],20,1163531501),v=u(v,m=u(m,l=u(l,g,v,m,n[e+13],5,-1444681467),g,v,n[e+2],9,-51403784),l,g,n[e+7],14,1735328473),m,l,n[e+12],20,-1926607734),v=c(v,m=c(m,l=c(l,g,v,m,n[e+5],4,-378558),g,v,n[e+8],11,-2022574463),l,g,n[e+11],16,1839030562),m,l,n[e+14],23,-35309556),v=c(v,m=c(m,l=c(l,g,v,m,n[e+1],4,-1530992060),g,v,n[e+4],11,1272893353),l,g,n[e+7],16,-155497632),m,l,n[e+10],23,-1094730640),v=c(v,m=c(m,l=c(l,g,v,m,n[e+13],4,681279174),g,v,n[e],11,-358537222),l,g,n[e+3],16,-722521979),m,l,n[e+6],23,76029189),v=c(v,m=c(m,l=c(l,g,v,m,n[e+9],4,-640364487),g,v,n[e+12],11,-421815835),l,g,n[e+15],16,530742520),m,l,n[e+2],23,-995338651),v=f(v,m=f(m,l=f(l,g,v,m,n[e],6,-198630844),g,v,n[e+7],10,1126891415),l,g,n[e+14],15,-1416354905),m,l,n[e+5],21,-57434055),v=f(v,m=f(m,l=f(l,g,v,m,n[e+12],6,1700485571),g,v,n[e+3],10,-1894986606),l,g,n[e+10],15,-1051523),m,l,n[e+1],21,-2054922799),v=f(v,m=f(m,l=f(l,g,v,m,n[e+8],6,1873313359),g,v,n[e+15],10,-30611744),l,g,n[e+6],15,-1560198380),m,l,n[e+13],21,1309151649),v=f(v,m=f(m,l=f(l,g,v,m,n[e+4],6,-145523070),g,v,n[e+11],10,-1120210379),l,g,n[e+2],15,718787259),m,l,n[e+9],21,-343485551),l=t(l,i),g=t(g,a),v=t(v,d),m=t(m,h);return[l,g,v,m]}function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}function d(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}function h(n){return a(i(d(n),8*n.length))}function l(n,t){var r,e,o=d(n),u=[],c=[];for(u[15]=c[15]=void 0,o.length>16&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(d(t)),512+8*t.length),a(i(c.concat(e),640))}function g(n){var t,r,e="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),e+="0123456789abcdef".charAt(t>>>4&15)+"0123456789abcdef".charAt(15&t);return e}function v(n){return unescape(encodeURIComponent(n))}function m(n){return h(v(n))}function p(n){return g(m(n))}function s(n,t){return l(v(n),v(t))}function C(n,t){return g(s(n,t))}function A(n,t,r){return t?r?s(t,n):C(t,n):r?m(n):p(n)}"function"==typeof define&&define.amd?define(function(){return A}):"object"==typeof module&&module.exports?module.exports=A:n.md5=A}(this);
+            var gitalk = new Gitalk({
+        		clientID: 'a7488698e2bf8aa0b134',
+        		clientSecret: '6edd169757d428197eb48c088bb8a12e8c09ebd6',
+        		repo: 'blog',
+        		owner: 'tokerr',
+        		admin: ['tokerr'],
+        		id: md5(window.location.pathname),
+        		distractionFreeMode: true
+            });
+            gitalk.render('gitalk-container');
+        </script>
+        <!-- Gitalk end -->
+        <br>
+        <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题
+        <!--
+        ，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+        -->
+        </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

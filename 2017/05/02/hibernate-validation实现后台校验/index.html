@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>validation实现后台校验; | 农永滔的博客</title>
+  
+  <meta name="keywords" content="hadoop,Spring,大数据,Java,nongyongtao,mybatis">
+  
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="农永滔的博客">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="undefined" />
+  <link rel="icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
+  
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7c0d3796d074be0957be656beaf84aca";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >农永滔的博客</a>
+				<div class='menu'>
+					<ul class='h-list'>
+            
+    					
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/">
+										<i class='fas fa-home fa-fw'></i>&nbsp;主页
+									</a>
+  							</li>
+        			
+    						<li>
+									<a id="not_current"
+									 class="nav flat-box" href="/archives/">
+										<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+									</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+										<a class="nav  flat-box" href="/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-hibernate-validation实现后台校验" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    <section class='meta'>
+      
+      <div class="meta" id="header-meta">
+        
+            <h1 class="title">validation实现后台校验;</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2017-05-02
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </div>
+        
+
+        
+
+      </div>
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="1-validation校验"><a href="#1-validation校验" class="headerlink" title="1    validation校验"></a>1    validation校验</h3><p>对前端的校验大多数通过js在页面校验，这种方法比较简单，如果对安全性考虑，还要在后台校验。</p>
+<p>springmvc使用JSR-303（javaEE6规范的一部分）校验规范，springmvc使用的是Hibernate Validator（和Hibernate的ORM）</p>
+<h4 id="1-1-加入Hibernate-Validator的jar"><a href="#1-1-加入Hibernate-Validator的jar" class="headerlink" title="1.1    加入Hibernate Validator的jar"></a>1.1    加入Hibernate Validator的jar</h4><a id="more"></a>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image.png" alt=""></p>
+<h4 id="1-2-在处理器适配器中配置校验器"><a href="#1-2-在处理器适配器中配置校验器" class="headerlink" title="1.2    在处理器适配器中配置校验器"></a>1.2    在处理器适配器中配置校验器</h4><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%202.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%203.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%204.png" alt=""></p>
+<h4 id="1-3-创建CustomValidationMessages"><a href="#1-3-创建CustomValidationMessages" class="headerlink" title="1.3    创建CustomValidationMessages"></a>1.3    创建CustomValidationMessages</h4><p>在classpath下创建CustomValidationMessages.properties</p>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%205.png" alt=""></p>
+<h4 id="1-4-校验规则"><a href="#1-4-校验规则" class="headerlink" title="1.4    校验规则"></a>1.4    校验规则</h4><p>需求：<br>商品信息提交时校验 ，商品生产日期不能为空，商品名称长度在1到30字符之间</p>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%206.png" alt=""></p>
+<h4 id="1-5-捕获错误"><a href="#1-5-捕获错误" class="headerlink" title="1.5    捕获错误"></a>1.5    捕获错误</h4><p>需要修改controller方法，在要校验的pojo前边加上@Validated，<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%207.png" alt=""></p>
+<p>错误信息输出：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%208.png" alt=""></p>
+<h4 id="1-6-在页面上展示错误"><a href="#1-6-在页面上展示错误" class="headerlink" title="1.6    在页面上展示错误"></a>1.6    在页面上展示错误</h4><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%209.png" alt=""></p>
+<h4 id="1-7-分组校验"><a href="#1-7-分组校验" class="headerlink" title="1.7    分组校验"></a>1.7    分组校验</h4><p>需求：<br>针对不同的controller方法通过分组校验达到个性化校验的目的，修改商品修改功能，只校验生产日期不能为空。</p>
+<h5 id="第一步：创建分组接口"><a href="#第一步：创建分组接口" class="headerlink" title="第一步：创建分组接口"></a>第一步：创建分组接口</h5><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2010.png" alt=""></p>
+<h5 id="第二步：定义校验规则属于哪个分组"><a href="#第二步：定义校验规则属于哪个分组" class="headerlink" title="第二步：定义校验规则属于哪个分组"></a>第二步：定义校验规则属于哪个分组</h5><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2011.png" alt=""></p>
+<h5 id="第三步：在controller方法定义使用校验的分组"><a href="#第三步：在controller方法定义使用校验的分组" class="headerlink" title="第三步：在controller方法定义使用校验的分组"></a>第三步：在controller方法定义使用校验的分组</h5><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2012.png" alt="">
+ </p>
+<h5 id="1-8-hibernate-validator的配置以及使用"><a href="#1-8-hibernate-validator的配置以及使用" class="headerlink" title="1.8    hibernate-validator的配置以及使用"></a>1.8    hibernate-validator的配置以及使用</h5><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2022.JPG" alt=""><br>此处只列出Hibernate Validator提供的大部分验证约束注解，请参考hibernate validator官方文档了解其他验证约束注解和进行自定义的验证约束注解定义。</p>
+<h3 id="springmvc参数自动转换"><a href="#springmvc参数自动转换" class="headerlink" title="springmvc参数自动转换:"></a>springmvc参数自动转换:</h3><p>1.String to Date<br>2.String to Integer or int<br>3.String to Byte or int<br>4.String to Long or loong</p>
+<pre><code>Failed to convert property value of type &apos;java.lang.String&apos; to required type &apos;java.lang.Byte&apos; for property &apos;duration&apos;; nested exception is org.springframework.core.convert.ConversionFailedException: Unable to convert value &quot;128&quot; from type &apos;java.lang.String&apos; to type &apos;java.lang.Byte&apos;; nested exception is java.lang.NumberFormatException: Value out of range. Value:&quot;128&quot; Radix:10
+Failed to convert property value of type &apos;java.lang.String&apos; to required type &apos;java.util.Date&apos; for property &apos;starttime&apos;; nested exception is org.springframework.core.convert.ConversionFailedException: Unable to convert value &quot;2017-01-23 16:25:45&quot; from type &apos;java.lang.String&apos; to type &apos;java.util.Date&apos;; nested exception is java.lang.IllegalStateException: JodaTime library not available - @DateTimeFormat not supported
+</code></pre><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2013.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2014.png" alt=""></p>
+<pre><code>http://127.0.0.1:8888/mokao-back/empfollowups/addEmpfollowups?empId=12988&amp;starttime=2015-06-04%2009:06:29&amp;duration=128&amp;salesid=325
+</code></pre><h3 id="Validator校验器使用正常"><a href="#Validator校验器使用正常" class="headerlink" title="Validator校验器使用正常"></a>Validator校验器使用正常</h3><pre><code>[
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;duration&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.duration&quot;,
+                    &quot;duration&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;duration&quot;
+            }
+        ],
+        &quot;bindingFailure&quot;: true,
+        &quot;code&quot;: &quot;typeMismatch&quot;,
+        &quot;codes&quot;: [
+            &quot;typeMismatch.empfollowups.duration&quot;,
+            &quot;typeMismatch.duration&quot;,
+            &quot;typeMismatch.java.lang.Byte&quot;,
+            &quot;typeMismatch&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;Failed to convert property value of type &apos;java.lang.String&apos; to required type &apos;java.lang.Byte&apos; for property &apos;duration&apos;; nested exception is org.springframework.core.convert.ConversionFailedException: Unable to convert value &quot;128&quot; from type &apos;java.lang.String&apos; to type &apos;java.lang.Byte&apos;; nested exception is java.lang.NumberFormatException: Value out of range. Value:&quot;128&quot; Radix:10&quot;,
+        &quot;field&quot;: &quot;duration&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;,
+        &quot;rejectedValue&quot;: &quot;128&quot;
+    },
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;starttime&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.starttime&quot;,
+                    &quot;starttime&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;starttime&quot;
+            }
+        ],
+        &quot;bindingFailure&quot;: true,
+        &quot;code&quot;: &quot;typeMismatch&quot;,
+        &quot;codes&quot;: [
+            &quot;typeMismatch.empfollowups.starttime&quot;,
+            &quot;typeMismatch.starttime&quot;,
+            &quot;typeMismatch.java.util.Date&quot;,
+            &quot;typeMismatch&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;Failed to convert property value of type &apos;java.lang.String&apos; to required type &apos;java.util.Date&apos; for property &apos;starttime&apos;; nested exception is org.springframework.core.convert.ConversionFailedException: Unable to convert value &quot;2015-06-04 09:06:29&quot; from type &apos;java.lang.String&apos; to type &apos;java.util.Date&apos;; nested exception is java.lang.IllegalStateException: JodaTime library not available - @DateTimeFormat not supported&quot;,
+        &quot;field&quot;: &quot;starttime&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;,
+        &quot;rejectedValue&quot;: &quot;2015-06-04 09:06:29&quot;
+    },
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;goal&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.goal&quot;,
+                    &quot;goal&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;goal&quot;
+            }
+        ],
+        &quot;bindingFailure&quot;: false,
+        &quot;code&quot;: &quot;NotNull&quot;,
+        &quot;codes&quot;: [
+            &quot;NotNull.empfollowups.goal&quot;,
+            &quot;NotNull.goal&quot;,
+            &quot;NotNull.java.lang.String&quot;,
+            &quot;NotNull&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;回访目的不能为空!&quot;,
+        &quot;field&quot;: &quot;goal&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;
+    },
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;salesid&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.salesid&quot;,
+                    &quot;salesid&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;salesid&quot;
+            },
+            127,
+            0
+        ],
+        &quot;bindingFailure&quot;: false,
+        &quot;code&quot;: &quot;Range&quot;,
+        &quot;codes&quot;: [
+            &quot;Range.empfollowups.salesid&quot;,
+            &quot;Range.salesid&quot;,
+            &quot;Range.java.lang.Integer&quot;,
+            &quot;Range&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;回访时间范围请保持在0-127分钟之内!&quot;,
+        &quot;field&quot;: &quot;salesid&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;,
+        &quot;rejectedValue&quot;: 325
+    }
+]
+</code></pre><p>OK【对于以上 String to Byte 类型错误的原因是：传过去的参数超出-127~127的范围，因此出现数字格式化异常，若是绑定的参数在正常范围内即-127~127之内则能正常绑定】<br>NO【已经解决，@DateTimeFormat not support  对于日期格式的字符串配置的springmvc的转换去没有转换成功<br>         异常原因：缺少jar包<br>          导入如下jar包即可使用注解的方式将pojo中string类型字符串转换成日期对象:joda-time库<br>】<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2015.png" alt=""></p>
+<h3 id="二、以下是springmvc中validator的配置："><a href="#二、以下是springmvc中validator的配置：" class="headerlink" title="二、以下是springmvc中validator的配置："></a>二、以下是springmvc中validator的配置：</h3><p> 2.1先引入相关jar包:已附录在首行，3个相关jar包，若是需要使用注解对pojo中的Date类型进行转换，需要将joda-time也一并引入</p>
+<p> 2.2 配置：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2016.png" alt=""><br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2017.png" alt=""><br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2018.png" alt=""></p>
+<p>控制器<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2019.png" alt=""></p>
+<p> 2.3相关文件：源码文件，这里就不帖出来了</p>
+<p> 2.4 pojo属性类型转换除了@DateTimeFormat 注解用于转换日期之外，还有可用于数字类型的属性转换的注解:@NumberFormat<br>@DateTimeFormat(pattern=”yyyy-MM-dd”) 可将形如1980-0-01的字符串转换到Date类<br>@NumberFormat(pattern=”#,###.##”) 可将形如4,500.00的字符串转换成long类型</p>
+<p>2.5 List<objecterror> allErrors = bindingResult.getAllErrors(); allErrors 实例展示(这里转换成了json字符串)</objecterror></p>
+<pre><code>http://127.0.0.1:8888/mokao-back/empfollowups/addEmpfollowups?empId=12988&amp;starttime=2015-06-04%2009:06:29&amp;duration=118&amp;salesid=325
+</code></pre><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2020.png" alt=""></p>
+<pre><code>[
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;salesid&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.salesid&quot;,
+                    &quot;salesid&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;salesid&quot;
+            },
+            127,
+            0
+        ],
+        &quot;bindingFailure&quot;: false,
+        &quot;code&quot;: &quot;Range&quot;,
+        &quot;codes&quot;: [
+            &quot;Range.empfollowups.salesid&quot;,
+            &quot;Range.salesid&quot;,
+            &quot;Range.java.lang.Integer&quot;,
+            &quot;Range&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;销售的id值请保持在0~127范围之内!&quot;,
+        &quot;field&quot;: &quot;salesid&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;,
+        &quot;rejectedValue&quot;: 325
+    },
+    {
+        &quot;arguments&quot;: [
+            {
+                &quot;code&quot;: &quot;goal&quot;,
+                &quot;codes&quot;: [
+                    &quot;empfollowups.goal&quot;,
+                    &quot;goal&quot;
+                ],
+                &quot;defaultMessage&quot;: &quot;goal&quot;
+            }
+        ],
+        &quot;bindingFailure&quot;: false,
+        &quot;code&quot;: &quot;NotNull&quot;,
+        &quot;codes&quot;: [
+            &quot;NotNull.empfollowups.goal&quot;,
+            &quot;NotNull.goal&quot;,
+            &quot;NotNull.java.lang.String&quot;,
+            &quot;NotNull&quot;
+        ],
+        &quot;defaultMessage&quot;: &quot;回访目的不能为空!&quot;,
+        &quot;field&quot;: &quot;goal&quot;,
+        &quot;objectName&quot;: &quot;empfollowups&quot;
+    }
+]
+</code></pre><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/hibernate-validation%E6%A0%A1%E9%AA%8C/Image%2021.png" alt=""></p>
+<pre><code>org.codehaus.jackson.map.JsonMappingException: No serializer found for class org.springframework.validation.DefaultMessageCodesResolver and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS) ) (through reference chain: org.springframework.validation.BeanPropertyBindingResult[&quot;messageCodesResolver&quot;])
+     at org.codehaus.jackson.map.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:52)
+     at org.codehaus.jackson.map.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:25)
+     at org.codehaus.jackson.map.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:446)
+     at org.codehaus.jackson.map.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:150)
+     at org.codehaus.jackson.map.ser.BeanSerializer.serialize(BeanSerializer.java:112)
+     at org.codehaus.jackson.map.ser.StdSerializerProvider._serializeValue(StdSerializerProvider.java:610)
+     at org.codehaus.jackson.map.ser.StdSerializerProvider.serializeValue(StdSerializerProvider.java:256)
+     at org.codehaus.jackson.map.ObjectMapper._configAndWriteValue(ObjectMapper.java:2575)
+     at org.codehaus.jackson.map.ObjectMapper.writeValueAsString(ObjectMapper.java:2097)
+     at com.skf.mokao.controller.empfollowups.EmpfollowupsController.addEmpfollowups(EmpfollowupsController.java:125)
+     at com.skf.mokao.controller.empfollowups.EmpfollowupsController$$FastClassByCGLIB$$2006e11c.invoke(&lt;generated&gt;)
+     at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:191)
+     at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:688)
+     at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+     at org.springframework.aop.aspectj.AspectJAfterAdvice.invoke(AspectJAfterAdvice.java:42)
+     at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+     at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:80)
+     at com.skf.mokao.aspect.Aspect5_LoginCheck.around(Aspect5_LoginCheck.java:146)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:606)
+     at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:621)
+     at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:610)
+     at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:65)
+     at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+     at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:89)
+     at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+     at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:621)
+     at com.skf.mokao.controller.empfollowups.EmpfollowupsController$$EnhancerByCGLIB$$8b5e69da.addEmpfollowups(&lt;generated&gt;)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:606)
+     at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:176)
+     at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.invokeHandlerMethod(AnnotationMethodHandlerAdapter.java:426)
+     at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(AnnotationMethodHandlerAdapter.java:414)
+     at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+     at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+     at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+     at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+     at javax.servlet.http.HttpServlet.service(HttpServlet.java:624)
+     at javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:303)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at com.skf.mokao.filter.UserLoginFilter.doFilter(UserLoginFilter.java:63)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+     at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+     at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+     at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+     at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:380)
+     at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+     at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+     at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+     at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+     at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at com.skf.mokao.filter.RequestParametersFilter.doFilter(RequestParametersFilter.java:138)
+     at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+     at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+     at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:218)
+     at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:122)
+     at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:505)
+     at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:169)
+     at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:103)
+     at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:956)
+     at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116)
+     at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:442)
+     at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1083)
+     at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:640)
+     at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2517)
+     at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2506)
+     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+     at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+     at java.lang.Thread.run(Thread.java:745)
+</code></pre>
+        </div>
+
+        <section class='meta' id="footer-meta">
+            <time class="time" itemprop="dateUpdated" datetime="2019-05-01T21:51:07+08:00" content="2019-05-01">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2019-05-01
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/validation/">validation</a>, <a class="tag" href="/tags/spring/">spring</a>, <a class="tag" href="/tags/springmvc/">springmvc</a>, <a class="tag" href="/tags/hibernate-validation/">hibernate-validation</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2017/04/27/在不同环境下使用Gson出现的Date格式化问题/" rel="prev" title="在不同环境下使用Gson出现的Date格式化问题">
+                                  
+                                      在不同环境下使用Gson出现的Date格式化问题
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/google/">google</a>, <a class="tag" href="/tags/json/">json</a>, <a class="tag" href="/tags/gson/">gson</a>, <a class="tag" href="/tags/linux/">linux</a>, <a class="tag" href="/tags/windows/">windows</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2017/05/05/序列化和反序列化的简单理解/" rel="prev" title="序列化和反序列化的简单理解">
+                                    
+                                        序列化和反序列化的简单理解
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/java/">java</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://tokerr.github.io/2017/04/26/sql语句使用临时数据，模拟构建一张临时表-用于一次性查询的/">sql语句使用临时数据，模拟构建一张临时表(用于一次性查询的)</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/04/27/在不同环境下使用Gson出现的Date格式化问题/">在不同环境下使用Gson出现的Date格式化问题</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/05/05/序列化和反序列化的简单理解/">序列化和反序列化的简单理解</a></li>
+            
+                <li><a href="https://tokerr.github.io/2017/05/06/ORA-12541-TNS-无监听程序/">ORA-12541:TNS:无监听程序</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                <h4>
+                    <div style="cursor:pointer;width: 75px;" onclick="$('html, body').animate({scrollTop: $('#gitalk-container').offset().top  }, 500);">
+                        <i class="fas fa-comments fa-fw" aria-hidden="true" ></i>&nbsp;评论
+                    </div>
+                </h4>
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'validation实现后台校验;',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+  <section class='m_widget author'>
+    
+      <div class='header'>
+        <img class='avatar' src='https://raw.githubusercontent.com/tokerr/markdownImage/master/images/head.jpeg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:nytom@foxmail.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/tokerr" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </section>
+
+
+    
+    
+        
+  <section class='m_widget announcement'>
+    <header class='header pure'>
+        <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告</div>
+    </header>
+    <div class='content pure'>
+      这是我的<b><a href="https://github.com/tokerr">GitHub</a></b>。
+    </div>
+  </section>
+
+
+    
+    
+        <section class='m_widget categories'>
+    <header class='header pure'>
+        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    </header>
+    <div class='content pure'>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <header class="header pure">
+            <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        </header>
+        <div class='content pure'>
+            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 16.5px; color: #888">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+        </div>
+    </section>
+
+
+    
+    
+        
+    <section class='m_widget toc-wrapper'>
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='wrapper'><a class="s-toc rightBtn" title="固定到顶部" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class='content pure'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-validation校验"><span class="toc-text">1    validation校验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-加入Hibernate-Validator的jar"><span class="toc-text">1.1    加入Hibernate Validator的jar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-在处理器适配器中配置校验器"><span class="toc-text">1.2    在处理器适配器中配置校验器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-创建CustomValidationMessages"><span class="toc-text">1.3    创建CustomValidationMessages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-校验规则"><span class="toc-text">1.4    校验规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-捕获错误"><span class="toc-text">1.5    捕获错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-在页面上展示错误"><span class="toc-text">1.6    在页面上展示错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-分组校验"><span class="toc-text">1.7    分组校验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#第一步：创建分组接口"><span class="toc-text">第一步：创建分组接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第二步：定义校验规则属于哪个分组"><span class="toc-text">第二步：定义校验规则属于哪个分组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第三步：在controller方法定义使用校验的分组"><span class="toc-text">第三步：在controller方法定义使用校验的分组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-8-hibernate-validator的配置以及使用"><span class="toc-text">1.8    hibernate-validator的配置以及使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc参数自动转换"><span class="toc-text">springmvc参数自动转换:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Validator校验器使用正常"><span class="toc-text">Validator校验器使用正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、以下是springmvc中validator的配置："><span class="toc-text">二、以下是springmvc中validator的配置：</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+    
+    
+        <section class='m_widget links'>
+    <header class='header pure'>
+        <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+        
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:nytom@foxmail.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【农永滔的博客】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+        
+    </header>
+    <div class='content pure'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" title="https://tokerr.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://tokerr.github.io">
+                    <div class='name'>
+                        
+                            <img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
+                        
+                        &nbsp;&nbsp;农永滔的博客
+                    </div>
+                </a></li>
+            
+                <li><a class="flat-box" title="https://skydh.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://skydh.github.io">
+                    <div class='name'>
+                        
+                            <img src="http://t2.hddhhn.com/uploads/tu/201811/9999/84695947e4.jpg">
+                        
+                        &nbsp;&nbsp;董航的博客
+                    </div>
+                </a></li>
+            
+        </ul>
+    </div>
+</section>
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:nytom@foxmail.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/tokerr" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://y.qq.com/n/yqq/playlist/2801715580.html" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>欢迎访问我的博客，一个对世界充满好奇的程序猿。</div>
+    <!--
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+    -->
+    <!--评论系统-->
+        <!-- Gitalk 评论 start  -->
+        <!-- Link Gitalk 的支持文件  -->
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+        !function(n){"use strict";function t(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}function r(n,t){return n<<t|n>>>32-t}function e(n,e,o,u,c,f){return t(r(t(t(e,n),t(u,f)),c),o)}function o(n,t,r,o,u,c,f){return e(t&r|~t&o,n,t,u,c,f)}function u(n,t,r,o,u,c,f){return e(t&o|r&~o,n,t,u,c,f)}function c(n,t,r,o,u,c,f){return e(t^r^o,n,t,u,c,f)}function f(n,t,r,o,u,c,f){return e(r^(t|~o),n,t,u,c,f)}function i(n,r){n[r>>5]|=128<<r%32,n[14+(r+64>>>9<<4)]=r;var e,i,a,d,h,l=1732584193,g=-271733879,v=-1732584194,m=271733878;for(e=0;e<n.length;e+=16)i=l,a=g,d=v,h=m,g=f(g=f(g=f(g=f(g=c(g=c(g=c(g=c(g=u(g=u(g=u(g=u(g=o(g=o(g=o(g=o(g,v=o(v,m=o(m,l=o(l,g,v,m,n[e],7,-680876936),g,v,n[e+1],12,-389564586),l,g,n[e+2],17,606105819),m,l,n[e+3],22,-1044525330),v=o(v,m=o(m,l=o(l,g,v,m,n[e+4],7,-176418897),g,v,n[e+5],12,1200080426),l,g,n[e+6],17,-1473231341),m,l,n[e+7],22,-45705983),v=o(v,m=o(m,l=o(l,g,v,m,n[e+8],7,1770035416),g,v,n[e+9],12,-1958414417),l,g,n[e+10],17,-42063),m,l,n[e+11],22,-1990404162),v=o(v,m=o(m,l=o(l,g,v,m,n[e+12],7,1804603682),g,v,n[e+13],12,-40341101),l,g,n[e+14],17,-1502002290),m,l,n[e+15],22,1236535329),v=u(v,m=u(m,l=u(l,g,v,m,n[e+1],5,-165796510),g,v,n[e+6],9,-1069501632),l,g,n[e+11],14,643717713),m,l,n[e],20,-373897302),v=u(v,m=u(m,l=u(l,g,v,m,n[e+5],5,-701558691),g,v,n[e+10],9,38016083),l,g,n[e+15],14,-660478335),m,l,n[e+4],20,-405537848),v=u(v,m=u(m,l=u(l,g,v,m,n[e+9],5,568446438),g,v,n[e+14],9,-1019803690),l,g,n[e+3],14,-187363961),m,l,n[e+8],20,1163531501),v=u(v,m=u(m,l=u(l,g,v,m,n[e+13],5,-1444681467),g,v,n[e+2],9,-51403784),l,g,n[e+7],14,1735328473),m,l,n[e+12],20,-1926607734),v=c(v,m=c(m,l=c(l,g,v,m,n[e+5],4,-378558),g,v,n[e+8],11,-2022574463),l,g,n[e+11],16,1839030562),m,l,n[e+14],23,-35309556),v=c(v,m=c(m,l=c(l,g,v,m,n[e+1],4,-1530992060),g,v,n[e+4],11,1272893353),l,g,n[e+7],16,-155497632),m,l,n[e+10],23,-1094730640),v=c(v,m=c(m,l=c(l,g,v,m,n[e+13],4,681279174),g,v,n[e],11,-358537222),l,g,n[e+3],16,-722521979),m,l,n[e+6],23,76029189),v=c(v,m=c(m,l=c(l,g,v,m,n[e+9],4,-640364487),g,v,n[e+12],11,-421815835),l,g,n[e+15],16,530742520),m,l,n[e+2],23,-995338651),v=f(v,m=f(m,l=f(l,g,v,m,n[e],6,-198630844),g,v,n[e+7],10,1126891415),l,g,n[e+14],15,-1416354905),m,l,n[e+5],21,-57434055),v=f(v,m=f(m,l=f(l,g,v,m,n[e+12],6,1700485571),g,v,n[e+3],10,-1894986606),l,g,n[e+10],15,-1051523),m,l,n[e+1],21,-2054922799),v=f(v,m=f(m,l=f(l,g,v,m,n[e+8],6,1873313359),g,v,n[e+15],10,-30611744),l,g,n[e+6],15,-1560198380),m,l,n[e+13],21,1309151649),v=f(v,m=f(m,l=f(l,g,v,m,n[e+4],6,-145523070),g,v,n[e+11],10,-1120210379),l,g,n[e+2],15,718787259),m,l,n[e+9],21,-343485551),l=t(l,i),g=t(g,a),v=t(v,d),m=t(m,h);return[l,g,v,m]}function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}function d(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}function h(n){return a(i(d(n),8*n.length))}function l(n,t){var r,e,o=d(n),u=[],c=[];for(u[15]=c[15]=void 0,o.length>16&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(d(t)),512+8*t.length),a(i(c.concat(e),640))}function g(n){var t,r,e="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),e+="0123456789abcdef".charAt(t>>>4&15)+"0123456789abcdef".charAt(15&t);return e}function v(n){return unescape(encodeURIComponent(n))}function m(n){return h(v(n))}function p(n){return g(m(n))}function s(n,t){return l(v(n),v(t))}function C(n,t){return g(s(n,t))}function A(n,t,r){return t?r?s(t,n):C(t,n):r?m(n):p(n)}"function"==typeof define&&define.amd?define(function(){return A}):"object"==typeof module&&module.exports?module.exports=A:n.md5=A}(this);
+            var gitalk = new Gitalk({
+        		clientID: 'a7488698e2bf8aa0b134',
+        		clientSecret: '6edd169757d428197eb48c088bb8a12e8c09ebd6',
+        		repo: 'blog',
+        		owner: 'tokerr',
+        		admin: ['tokerr'],
+        		id: md5(window.location.pathname),
+        		distractionFreeMode: true
+            });
+            gitalk.render('gitalk-container');
+        </script>
+        <!-- Gitalk end -->
+        <br>
+        <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题
+        <!--
+        ，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+        -->
+        </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
