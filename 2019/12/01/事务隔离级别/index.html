@@ -171,11 +171,11 @@
 </ul>
 <a id="more"></a>
 <p>这里一张图可以清楚的看到，不同的隔离级别下可能会出现的问题（X表示不会出现，V表示可能出现）。</p>
-<p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/2/2.png" alt="1.png"></p>
+<p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/2/2.jpg" alt="1.png"></p>
 <p>​    从上往下，事务的隔离级别依次递增，隔离级别越高导致数据库的处理效率越低。所以，需要选择适合自己业务系统的隔离级别，Mysql默认的隔离级别是“可重复度”、Oracle默认的隔离级别是“读已提交”。在将Oracle的数据迁移到Mysql的时候，记得将Mysql的事务隔离级别设置成“读已提交”。Mysql可以通过如下的方式查看和修改事务隔离级别。</p>
 <p>​    使用 show variables 方式查询事务隔离级别：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &quot;transaction_isolation&quot;;</div></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/2/1.jpg" alt="查看事务隔离级别"></p>
+<p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/2/1.png" alt="查看事务隔离级别"></p>
 <p>修改事务隔离级别，可以通过修改配置文件，或者在线的方式修改。</p>
 <ol>
 <li><p>修改配置，在系统全局生效：</p>
@@ -229,7 +229,7 @@
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2019-12-01T20:16:42+08:00" content="2019-12-01">
+            <time class="time" itemprop="dateUpdated" datetime="2019-12-01T20:19:26+08:00" content="2019-12-01">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2019-12-01
             </time>
