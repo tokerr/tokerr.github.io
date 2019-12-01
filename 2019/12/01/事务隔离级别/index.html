@@ -212,7 +212,7 @@
 <h2 id="一致性读视图"><a href="#一致性读视图" class="headerlink" title="一致性读视图"></a>一致性读视图</h2><ol>
 <li><p>使用begin或者start transaction的方式启动事务，一致性读视图是在执行第一个快照读语句的时候创建的。</p>
 </li>
-<li><p>使用如下语启动事务，一致性读视图是在执行改语句的时候创建的。</p>
+<li><p>使用如下语启动事务，一致性读视图是在执行该语句的时候创建的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">start transaction with consistent snapshot;</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -225,12 +225,12 @@
 <p>​    InnoDB中每一行记录都有多个版本（MySQL默认使用InnoDB存储引擎），也就是数据库的多版本并发控制（MVCC）。</p>
 <p>​    MySQL对每一条的记录更新都会记录一条回滚日志（undo log），记录最新的值，同时通过回滚日志可以得到上一个状态的值。</p>
 <p>​    对于不同的‘一致性读视图’，可以通过对当前值，依次执行undo log回滚得到。</p>
-<p>​    回滚日志什么时候删除？mysql会判断，当没有比这个回滚日志更早的一致性读视图时，会将这个回滚日志删除掉。因此，建议不要使用长事务，长事务会导致回滚日志很大，会导致大量暂用存储空间。</p>
+<p>​    回滚日志什么时候删除？mysql会判断，当没有比这个回滚日志更早的一致性读视图时，会将这个回滚日志删除掉。因此，建议不要使用长事务，长事务会导致回滚日志很大，会导致大量占用存储空间。</p>
 
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2019-12-01T20:02:00+08:00" content="2019-12-01">
+            <time class="time" itemprop="dateUpdated" datetime="2019-12-01T20:07:59+08:00" content="2019-12-01">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2019-12-01
             </time>
@@ -260,7 +260,7 @@
                                 
                                 <h6 class="tags">
                                     <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
-                                    <a class="tag" href="/tags/java/">java</a>, <a class="tag" href="/tags/jvm/">jvm</a>
+                                    <a class="tag" href="/tags/jvm/">jvm</a>, <a class="tag" href="/tags/java/">java</a>
                                 </h6>
                             
                         </span>
