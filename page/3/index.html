@@ -138,6 +138,53 @@
     <section class="meta">
       
         <h2 class="title">
+            <a href="/2017/05/28/Java运行时异常和非运行时异常/">
+                
+                    Java运行时异常和非运行时异常
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-05-28
+        </time>
+        
+
+    </section>
+
+    <section class="article typo">
+        <h1 id="1-Java异常机制"><a href="#1-Java异常机制" class="headerlink" title="1.Java异常机制"></a>1.Java异常机制</h1><p>Java把异常当做对象来处理，并定义一个基类java.lang.Throwable作为所有异常的超类。Java中的异常分为两大类：错误Error和异常Exception，Java异常体系结构如下图所示：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/Java%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8%E5%92%8C%E9%9D%9E%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8/Image.jpg" alt=""></p>
+<h1 id="2-Throwable"><a href="#2-Throwable" class="headerlink" title="2.Throwable"></a>2.Throwable</h1><p>Throwable类是所有异常或错误的超类，它有两个子类：Error和Exception，分别表示错误和异常。其中异常Exception分为运行时异常(RuntimeException)和非运行时异常，也称之为不检查异常(Unchecked Exception)和检查异常(Checked Exception)。</p>
+<h1 id="3-Error"><a href="#3-Error" class="headerlink" title="3.Error"></a>3.Error</h1><p>一般是指java虚拟机相关的问题，如系统崩溃、虚拟机出错误、动态链接失败等，这种错误无法恢复或不可能捕获，将导致应用程序中断，通常应用程序无法处理这些错误，因此应用程序不应该捕获Error对象，也无须在其throws子句中声明该方法抛出任何Error或其子类。<br>
+        
+            <div class="readmore">
+                <a href="/2017/05/28/Java运行时异常和非运行时异常/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
+                
+                    <a href="/tags/exception/"><i class="fas fa-tag fa-fw"></i>&nbsp;exception</a>
+                
+                    <a href="/tags/异常/"><i class="fas fa-tag fa-fw"></i>&nbsp;异常</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+      
+        <h2 class="title">
             <a href="/2017/05/07/mybatis连接oracle执行sql语句出现ORA-00904-invalid-identifier/">
                 
                     mybatis连接oracle执行sql语句出现ORA-00904: invalid identifier
@@ -563,48 +610,6 @@
 
         </div>
     
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/04/05/简单易懂的更换hexo主题的教程/">
-                
-                    简单易懂的更换hexo主题的教程
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-04-05
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h3 id="以Smackdown为例：http-blog-smackdown-gebilaowu-cn"><a href="#以Smackdown为例：http-blog-smackdown-gebilaowu-cn" class="headerlink" title="以Smackdown为例：http://blog.smackdown.gebilaowu.cn/"></a>以Smackdown为例：<a href="http://blog.smackdown.gebilaowu.cn/">http://blog.smackdown.gebilaowu.cn/</a></h3><h2 id="一、预览的页面"><a href="#一、预览的页面" class="headerlink" title="一、预览的页面"></a>一、预览的页面</h2><p><img src="http://i.imgur.com/FnrgLQ1.png" alt=""></p>
-<h2 id="二、到github中找到hexo主题的demo"><a href="#二、到github中找到hexo主题的demo" class="headerlink" title="二、到github中找到hexo主题的demo"></a>二、到github中找到hexo主题的demo</h2><p>一般的都会附带上github的demo地址，顺便附录上hexo官方的主题列表页面，大家可以在里面挑一款自己喜欢的(<a href="https://hexo.io/themes/)，这个官网的主题连接在_config.yml配置文件的themes属性配置的上面有。">https://hexo.io/themes/)，这个官网的主题连接在_config.yml配置文件的themes属性配置的上面有。</a><br>
-        
-            <div class="readmore">
-                <a href="/2017/04/05/简单易懂的更换hexo主题的教程/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/hexo-主题-更换/"><i class="fas fa-tag fa-fw"></i>&nbsp;hexo 主题 更换</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
 </section>
 
 
@@ -619,8 +624,14 @@
                 </a>
             
             <p class="current">
-                3 / 3
+                3 / 4
             </p>
+            
+                <a class="next" rel="next" href="/page/4/">
+                    <section class="post next">
+                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </section>
+                </a>
             
 
         </div>
@@ -692,7 +703,7 @@
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
         <div class='content pure'>
-            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
         </div>
     </section>
 
