@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    <url>
+        <loc>https://tokerr.github.io/tags/HDFS/</loc>
+        <lastmod>2019-05-01T13:51:07.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/YARN/</loc>
+        <lastmod>2019-05-01T13:51:07.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/hbase/</loc>
+        <lastmod>2019-05-01T13:51:07.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/javase/</loc>
+        <lastmod>2019-05-01T13:51:07.473Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
+        <lastmod>2019-05-01T13:51:07.473Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/jvm/</loc>
+        <lastmod>2019-05-01T13:51:07.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/exception/</loc>
+        <lastmod>2019-05-01T13:51:07.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E5%BC%82%E5%B8%B8/</loc>
+        <lastmod>2019-05-01T13:51:07.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/jquery/</loc>
+        <lastmod>2019-05-01T13:51:07.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/ajax/</loc>
+        <lastmod>2019-05-01T13:51:07.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/MapReducer/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/Shuffle/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/tomcat/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/springboot/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/jsp/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/Oracle/</loc>
+        <lastmod>2019-05-01T13:51:07.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2/</loc>
+        <lastmod>2019-05-01T13:51:07.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/validation/</loc>
+        <lastmod>2019-05-01T13:51:07.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/spring/</loc>
+        <lastmod>2019-05-01T13:51:07.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/springmvc/</loc>
+        <lastmod>2019-05-01T13:51:07.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/hibernate-validation/</loc>
+        <lastmod>2019-05-01T13:51:07.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/String/</loc>
+        <lastmod>2019-05-01T13:51:07.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E4%B8%B4%E6%97%B6%E8%A1%A8/</loc>
+        <lastmod>2019-05-01T13:51:07.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/sqoop/</loc>
+        <lastmod>2019-05-01T13:51:07.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/mybatis/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/oracle/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/ibator/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/google/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/json/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/gson/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/linux/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/windows/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/sql/</loc>
+        <lastmod>2019-05-01T13:51:07.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E9%9B%86%E5%90%88/</loc>
+        <lastmod>2019-05-01T13:51:07.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/Collection/</loc>
+        <lastmod>2019-05-01T13:51:07.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E5%8D%87%E5%BA%8F%EF%BC%8C%E9%99%8D%E5%BA%8F/</loc>
+        <lastmod>2019-05-01T13:51:07.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/Set/</loc>
+        <lastmod>2019-05-01T13:51:07.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/List/</loc>
+        <lastmod>2019-05-01T13:51:07.480Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+        <lastmod>2019-05-01T13:51:07.481Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</loc>
+        <lastmod>2019-05-01T13:51:07.481Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/hexo-%E4%B8%BB%E9%A2%98-%E6%9B%B4%E6%8D%A2/</loc>
+        <lastmod>2019-05-01T13:51:07.481Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/vmware/</loc>
+        <lastmod>2019-05-01T13:51:07.481Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/session/</loc>
+        <lastmod>2019-05-01T13:51:07.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/cookie/</loc>
+        <lastmod>2019-05-01T13:51:07.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/hadoop/</loc>
+        <lastmod>2019-12-01T11:58:23.066Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/zookeeper/</loc>
+        <lastmod>2019-12-01T11:58:23.066Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/cluster/</loc>
+        <lastmod>2019-12-01T11:58:23.066Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/mysql/</loc>
+        <lastmod>2019-12-01T12:40:40.639Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E4%BA%8B%E5%8A%A1/</loc>
+        <lastmod>2019-12-01T12:40:40.639Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</loc>
+        <lastmod>2019-12-01T12:40:40.639Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/java/</loc>
+        <lastmod>2020-02-16T10:02:14.542Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+        <lastmod>2020-02-16T10:02:14.542Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://tokerr.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2020-02-16T10:02:14.542Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
