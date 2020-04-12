@@ -138,6 +138,54 @@
     <section class="meta">
       
         <h2 class="title">
+            <a href="/2017/04/25/提高mysql千万级大数据SQL查询优化30条经验（Mysql索引优化注意）/">
+                
+                    提高mysql千万级大数据SQL查询优化30条经验（Mysql索引优化注意）
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-04-25
+        </time>
+        
+
+    </section>
+
+    <section class="article typo">
+        <p>转自：<a href="http://blog.163.com/zhangjie_0303/blog/static/9908270620146951355834/">http://blog.163.com/zhangjie_0303/blog/static/9908270620146951355834/</a></p>
+<h3 id="近期由于项目的需求，需要在项目的后台进行数据统计，由于涉及的表比较多，于是考虑到查询的速度的问题，以前也没怎么注意，这里记下一篇转载的博客。尽量多看官方文档！"><a href="#近期由于项目的需求，需要在项目的后台进行数据统计，由于涉及的表比较多，于是考虑到查询的速度的问题，以前也没怎么注意，这里记下一篇转载的博客。尽量多看官方文档！" class="headerlink" title="近期由于项目的需求，需要在项目的后台进行数据统计，由于涉及的表比较多，于是考虑到查询的速度的问题，以前也没怎么注意，这里记下一篇转载的博客。尽量多看官方文档！"></a>近期由于项目的需求，需要在项目的后台进行数据统计，由于涉及的表比较多，于是考虑到查询的速度的问题，以前也没怎么注意，这里记下一篇转载的博客。尽量多看官方文档！</h3><p>1.对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。</p>
+<p>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：select id from t where num=0</p>
+<p>3.应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则引擎将放弃使用索引而进行全表扫描。</p>
+        
+            <div class="readmore">
+                <a href="/2017/04/25/提高mysql千万级大数据SQL查询优化30条经验（Mysql索引优化注意）/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/mysql/"><i class="fas fa-tag fa-fw"></i>&nbsp;mysql</a>
+                
+                    <a href="/tags/数据库/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据库</a>
+                
+                    <a href="/tags/mysql索引优化/"><i class="fas fa-tag fa-fw"></i>&nbsp;mysql索引优化</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+      
+        <h2 class="title">
             <a href="/2017/04/05/简单易懂的更换hexo主题的教程/">
                 
                     简单易懂的更换hexo主题的教程
@@ -262,7 +310,7 @@
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
         <div class='content pure'>
-            <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+            <a href="/tags/CGLIB/" style="font-size: 14px; color: #999">CGLIB</a> <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/设计模式/" style="font-size: 14px; color: #999">设计模式</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
         </div>
     </section>
 
