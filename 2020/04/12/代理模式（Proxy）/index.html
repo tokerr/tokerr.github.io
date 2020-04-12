@@ -205,17 +205,30 @@
 </ul>
 <pre><code>  - 定义InvacationHandler
 
+
+
     <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line">Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
 
 
   - 通过JDK API生成接口的代理对象
 
+
+
     <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Proxy.newProxyInstance(MoveableSub.class.getClassLoader(), <span class="keyword">new</span> Class[]&#123;Moveable.class&#125;,<span class="keyword">new</span> MyInvocationHandler(<span class="keyword">new</span> MoveableSub()))</div></pre></td></tr></table></figure>
+
+
 
 
   - 可以通过设置，将生成的字节码文件（代理类）保存到本地    
 
+
+
     <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.setProperty(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>,<span class="string">"true"</span>)</div></pre></td></tr></table></figure>
+
+
+
 
 - 原理
 
@@ -243,17 +256,21 @@
 </li>
 <li><p>使用步骤</p>
 <ul>
-<li><p>引入maven依赖</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/cglib/cglib --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
+<li>引入maven依赖</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>- 编写一个需要被代理的类Example
+<pre><code>    <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/cglib/cglib --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
 
+
+
+
+
+- 编写一个需要被代理的类Example
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span>&#123;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">   System.out.println(<span class="string">"我是被代理对象！"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
 
 
 
@@ -279,7 +296,7 @@
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:48:28+08:00" content="2020-04-12">
+            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:55:22+08:00" content="2020-04-12">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2020-04-12
             </time>
