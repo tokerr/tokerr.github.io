@@ -164,6 +164,9 @@
 <h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><ul>
 <li>使用继承的方式实现代理</li>
 <li>使用组合的方式实现代理</li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>缺点</p>
 <ul>
 <li>需要为不同的代理逻辑编写新的代理类</li>
@@ -205,12 +208,16 @@
 </ul>
 <pre><code>    - 定义InvacationHandler
 
-        - <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line"></div><div class="line"> Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line"></div><div class="line"> Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
 
 
     - 通过JDK API生成接口的代理对象
 
     <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Proxy.newProxyInstance(MoveableSub.class.getClassLoader(), <span class="keyword">new</span> Class[]&#123;Moveable.class&#125;,<span class="keyword">new</span> MyInvocationHandler(<span class="keyword">new</span> MoveableSub()))</div></pre></td></tr></table></figure>
+
+
 
 
     - 可以通过设置，将生成的字节码文件（代理类）保存到本地
@@ -257,6 +264,8 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span>&#123;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">   System.out.println(<span class="string">"我是被代理对象！"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
 
+
+
 - 编写代理逻辑（拦截的逻辑）
 
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInterceptor implement MethodInterceptor &#123;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">        System.out.println(<span class="string">"这个是产生的代理对象："</span>+o.getClass().getName());    </div><div class="line">    Object invoke =methodProxy.invokeSuper(o,objects);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> invoke;</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -278,7 +287,7 @@
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:11:29+08:00" content="2020-04-12">
+            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:22:16+08:00" content="2020-04-12">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2020-04-12
             </time>
