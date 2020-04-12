@@ -196,34 +196,26 @@
 <li><p>使用步骤</p>
 <ul>
 <li><p>先定义一个接口</p>
-<ul>
-<li>比如：</li>
-</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span></span>&#123;</div><div class="line">	   <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>    - 定义InvacationHandler
+<pre><code>  - 定义InvacationHandler
 
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line"></div><div class="line"> Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line">Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
 
-    - 通过JDK API生成接口的代理对象
+  - 通过JDK API生成接口的代理对象
 
     <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Proxy.newProxyInstance(MoveableSub.class.getClassLoader(), <span class="keyword">new</span> Class[]&#123;Moveable.class&#125;,<span class="keyword">new</span> MyInvocationHandler(<span class="keyword">new</span> MoveableSub()))</div></pre></td></tr></table></figure>
 
 
+  - 可以通过设置，将生成的字节码文件（代理类）保存到本地    
 
-
-    - 可以通过设置，将生成的字节码文件（代理类）保存到本地
-
-      <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.setProperty(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>,<span class="string">"true"</span>)</div></pre></td></tr></table></figure>
-
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.setProperty(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>,<span class="string">"true"</span>)</div></pre></td></tr></table></figure>
 
 - 原理
 
@@ -287,7 +279,7 @@
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:22:16+08:00" content="2020-04-12">
+            <time class="time" itemprop="dateUpdated" datetime="2020-04-12T17:47:02+08:00" content="2020-04-12">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2020-04-12
             </time>
