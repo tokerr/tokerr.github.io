@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Java线程池ThreadPoolExecutor | 农永滔的博客</title>
+  <title>Java线程池ThreadPoolExecutor | 是滔不是涛</title>
   
   <meta name="keywords" content="hadoop,Spring,大数据,Java,nongyongtao,mybatis">
   
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
-  <link rel="alternate" href="/atom.xml" title="农永滔的博客">
+  <link rel="alternate" href="/atom.xml" title="是滔不是涛">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <link rel="shortcut icon" href="undefined" />
@@ -53,7 +53,7 @@
     <header class="l_header pure">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href='/' >农永滔的博客</a>
+			<a class="logo flat-box" href='/' >是滔不是涛</a>
 				<div class='menu'>
 					<ul class='h-list'>
             
@@ -154,7 +154,7 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <p>ThreadPoolExecutor是JDK中线程池的重要体现，JDK中的Executors工厂类，提供了不同ThreaPoolExecutor方法，本章的内容主要是对ThreadPoolExecutor的内部结构、运行原理和重点参数做介绍。</p>
+            <p>ThreadPoolExecutor是JDK中线程池的重要体现，JDK中的Executors工厂类，提供了不同ThreaPoolExecutor的构建方法，本章的内容主要是对ThreadPoolExecutor的内部结构、运行原理和重点参数做介绍。</p>
 <h1 id="一、继承关系图"><a href="#一、继承关系图" class="headerlink" title="一、继承关系图"></a>一、继承关系图</h1><p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/3/3.png" alt="类继承关系图"></p>
 <p>#二、内部结构组成</p>
 <ul>
@@ -172,8 +172,8 @@
 </li>
 <li><p>workQueue：类型为BlockingQueue的工作队列，用于保存等待执行任务的任务阻塞队列，有以下几种：</p>
 <pre><code>1） ArrayBlockingQueue：是一个基于数组实现的有界阻塞队列
-2）LinkedBlockingQueue：一个基于链表结构的无解阻塞队列
-3）SynchronousQueue：一个不存储元素的阻塞队列，每一个插入操作都必须等待另一个线程调用移除操作，否则一直处于阻塞状态
+  2）LinkedBlockingQueue：一个基于链表结构的无解阻塞队列
+  3）SynchronousQueue：一个不存储元素的阻塞队列，每一个插入操作都必须等待另一个线程调用移除操作，否则一直处于阻塞状态
 </code></pre></li>
 <li><p>RejectedExecutionHandler：饱和策略</p>
 <p>1）CallerRunPolicy：只用调用者所在的线程来处理任务</p>
@@ -201,9 +201,9 @@
         </div>
 
         <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="2020-02-16T18:03:45+08:00" content="2020-02-16">
+            <time class="time" itemprop="dateUpdated" datetime="2020-04-19T15:29:12+08:00" content="2020-04-19">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
-                本文最后更新于：2020-02-16
+                本文最后更新于：2020-04-19
             </time>
             
                 
@@ -409,20 +409,11 @@
     <header class='header pure'>
         <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
         
-            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:nytom@foxmail.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【农永滔的博客】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:nytom@foxmail.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【是滔不是涛】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
         
     </header>
     <div class='content pure'>
         <ul class="entry" id="links">
-            
-                <li><a class="flat-box" title="https://tokerr.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://tokerr.github.io">
-                    <div class='name'>
-                        
-                            <img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/images/favicon.png">
-                        
-                        &nbsp;&nbsp;农永滔的博客
-                    </div>
-                </a></li>
             
                 <li><a class="flat-box" title="https://skydh.github.io" target="_blank" rel="external nofollow noopener noreferrer" href="https://skydh.github.io">
                     <div class='name'>
@@ -463,7 +454,7 @@
         </div>
     
     <br>
-    <div>欢迎访问我的博客，一个对世界充满好奇的程序猿。</div>
+    <div>欢迎访问我的博客，我是是滔不是。</div>
     <!--
     <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
     <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
