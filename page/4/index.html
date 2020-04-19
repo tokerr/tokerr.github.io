@@ -138,6 +138,49 @@
     <section class="meta">
       
         <h2 class="title">
+            <a href="/2017/04/25/java-util-Date转java-sql-Date丢失时间问题/">
+                
+                    java.util.Date转java.sql.Date丢失时间问题
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-04-25
+        </time>
+        
+
+    </section>
+
+    <section class="article typo">
+        <h3 id="一-引发我写这篇博客的原因（问题描述）："><a href="#一-引发我写这篇博客的原因（问题描述）：" class="headerlink" title="一.引发我写这篇博客的原因（问题描述）："></a>一.引发我写这篇博客的原因（问题描述）：</h3><p>由于项目使用的是springmvc+mybatis，前期的开发使用到了ibator这个dao层代码生成工具(ps:后来因为老板的原因，禁用了这个工具，但是以前的老代码还有在使用这个工具生成的代码)，其中提供的Example极大的方便开发是进行数据的各种查询的工作，但是使用过程出现了一些问题。<br>在对日期时间类型的字段进行筛选的时候不能精确到时分秒，原因是Example里面默认的是将util的Date 转成 sql的Date，以至丢失时间 查询不能精确到时分秒<br><img src="http://i.imgur.com/gvPzID2.png" alt=""><br>
+        
+            <div class="readmore">
+                <a href="/2017/04/25/java-util-Date转java-sql-Date丢失时间问题/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
+                
+                    <a href="/tags/日期转换/"><i class="fas fa-tag fa-fw"></i>&nbsp;日期转换</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+      
+        <h2 class="title">
             <a href="/2017/04/25/提高mysql千万级大数据SQL查询优化30条经验（Mysql索引优化注意）/">
                 
                     提高mysql千万级大数据SQL查询优化30条经验（Mysql索引优化注意）

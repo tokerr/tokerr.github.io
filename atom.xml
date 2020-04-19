@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tokerr.github.io/"/>
-  <updated>2020-04-12T09:57:20.103Z</updated>
+  <updated>2020-04-19T06:24:49.609Z</updated>
   <id>https://tokerr.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="https://tokerr.github.io/2020/04/19/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88singleton%EF%BC%89/"/>
+    <id>https://tokerr.github.io/2020/04/19/单例模式（singleton）/</id>
+    <published>2020-04-19T05:48:49.009Z</published>
+    <updated>2020-04-19T06:24:49.609Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="单例模式（singleton）"><a href="#单例模式（singleton）" class="headerlink" title="单例模式（singleton）"></a>单例模式（singleton）</h2><h3 id="一、什么是单例模式？"><a href="#一、什么是单例模式？" class="headerlink" title="一、什么是单例模式？"></a>一、什么是单例模式？</h3><ul><li>确保内存当中一个类的实例对象只要一个</li></ul><h3 id="二、两种单例模式"><a href="#二、两种单例模式" class="headerlink" title="二、两种单例模式"></a>二、两种单例模式</h3><ul><li><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><ul><li><p>步骤</p><ul><li><p>在单例类中定义与自己类型相同的常量，并初始化</p><ul><li>private static final SingletonClass INSTANCE= new SingletonClass();</li></ul></li><li><p>私有化单例类的构造方法</p></li><li>定义一个publish的getInstance方法，返回实例化的常量</li></ul></li><li><p>特点</p><ul><li>在类初始化阶段就完成了单例对象的初始化</li><li>不存在多线程安全问题</li></ul></li></ul></li><li><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><ul><li><p>特点</p><ul><li>在第一次调用getInstance方法的时候才会初始化单例对象，这也是与‘饿汉式’的区别。</li></ul></li><li><p>实现步骤</p><ul><li><p>单例类中定义一个与自己类型相同的静态变量，不初始化</p><ul><li>private static SIngletonClass INSTANCE;</li></ul></li><li><p>同样需要私有化单例类的构造方法</p></li><li><p>实现getInstance方法</p><ul><li><h4 id="实现方式一"><a href="#实现方式一" class="headerlink" title="实现方式一"></a>实现方式一</h4><ul><li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SIngletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">if</span>(INSTANCE == <span class="keyword">null</span>)&#123;</div><div class="line"> INSTANCE=<span class="keyword">new</span> SingletonClass();</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ul></li></ul></li></ul></li></ul></li></ul><pre><code>  - 存在的问题      - 存在多线程安全的问题，可能两个线程分别得到不同的实例- #### 实现方式二：synchronized    - 在方式一的基础上，给getInstance方法加synchronized关键字    - 存在的问题        - 解决了方式一的多线程安全问题，但是会大大降低运行效率- #### 实现方式三  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SIngletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>( INSTANCE == <span class="keyword">null</span>)&#123;</div><div class="line"> <span class="keyword">synchronized</span>(SIngletonClass.class)&#123;</div><div class="line">  INSTANCE=<span class="keyword">new</span> SIngletonClass();</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>     - 缺陷：同样有多线程安全问题   - #### 实现方式四：双重判断加锁     1. 在方式三的基础上，在synchronized加锁之后，再次对INSTANCE做一次空判断，如果也为空，再初始化单例对象。     2. 需要使用volatile关键字修饰变量，防止JIT对指令进行重排序         - private static volatile SingletonClass INSTANCE;     3. 多线程安全的问题得以解决- #### 实现方式五：使用内部类的方式实现懒汉式  - 指导思想：    1. JVM“只对每个类加载一次”的原则，保证了多线程安全    2. JVM加载外部类时不会加载内部类，这样可以实现懒加载  - 代码实现    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span></span>&#123;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">SingletonClass</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass INSTANCE=<span class="keyword">new</span> SingletonClass();</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">return</span> InnerClass.INSTANCE;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>- #### 实现方式六：使用枚举类的方式实现懒汉式- 好处：  - 不仅可以解决多线程安全问题，还可以防止反序列化。想其他几种单例的实现方式，都是可以通过反射的方式再次创建实例的。（枚举类没有构造方法）  - 是最简单和安全的实现方式</code></pre><p>public static class InnerClass{<br>public static final SingletonClass INSTANCE=new SingletonClass();<br>} </p><p>public static SingletonClass getInstance(){</p><p>return InnerClass.INSTANCE;<br>}</p><p>}</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SingletonClass&#123;</div><div class="line">INSTANCE;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>这里列出了7种单例的实现方式，并不是说一定要用哪一种，而是应该结合项目的情况，选择一种合适的实现方式。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;单例模式（singleton）&quot;&gt;&lt;a href=&quot;#单例模式（singleton）&quot; class=&quot;headerlink&quot; title=&quot;单例模式（singleton）&quot;&gt;&lt;/a&gt;单例模式（singleton）&lt;/h2&gt;&lt;h3 id=&quot;一、什么是单例模式？&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>代理模式（Proxy）</title>
     <link href="https://tokerr.github.io/2020/04/12/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%88Proxy%EF%BC%89/"/>
     <id>https://tokerr.github.io/2020/04/12/代理模式（Proxy）/</id>
     <published>2020-04-12T08:44:00.000Z</published>
-    <updated>2020-04-12T09:57:20.103Z</updated>
+    <updated>2020-04-13T02:32:52.953Z</updated>
     
     <content type="html"><![CDATA[<h2 id="代理模式（Proxy）"><a href="#代理模式（Proxy）" class="headerlink" title="代理模式（Proxy）"></a>代理模式（Proxy）</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul><li>本文当中出现的代码均为伪代码，可参考文章末尾列出的项目代码地址。</li><li>假设我们的jar包使用maven进行管理。</li></ul><h3 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h3><ul><li>对访问（或请求）实现拦截和权限的控制，以决定是否需要执行用户的请求。常见的代理体现有Spring AOP、javax.servlet.Filter，与装饰模式很像</li></ul><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><ul><li>使用继承的方式实现代理</li><li>使用组合的方式实现代理</li></ul><a id="more"></a><ul><li><p>缺点</p><ul><li>需要为不同的代理逻辑编写新的代理类</li></ul></li><li><p>角色</p><ul><li>代理</li><li>被代理对象</li></ul></li><li><p>类图</p><ul><li>代理和被代理对象都实现了同一个接口</li></ul></li></ul><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><ul><li><p>JDK动态代理（接口代理）</p><ul><li><p>局限</p><ul><li>被代理类必须要实现至少一个接口</li><li>通过反编译查看生成的代理类，其实实现了指定的接口</li></ul></li><li><p>使用步骤</p><ul><li><p>先定义一个接口</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Moveable</span></span>&#123;</div><div class="line">   <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></li></ul></li></ul></li></ul><pre><code>  - 定义InvacationHandler    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInvocationhandler implement InvocationHandler&#123;</div><div class="line">Moveable object;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyInvocationhandler</span><span class="params">(Moveable object)</span></span>&#123;</div><div class="line"> <span class="keyword">this</span>.object=object;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method , Object[] args)</span></span>&#123;</div><div class="line"></div><div class="line">System.out.println(<span class="string">"执行之前！"</span>);</div><div class="line"><span class="keyword">return</span> method.invoke(object,args);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  - 通过JDK API生成接口的代理对象    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Proxy.newProxyInstance(MoveableSub.class.getClassLoader(), <span class="keyword">new</span> Class[]&#123;Moveable.class&#125;,<span class="keyword">new</span> MyInvocationHandler(<span class="keyword">new</span> MoveableSub()))</div></pre></td></tr></table></figure>  - 可以通过设置，将生成的字节码文件（代理类）保存到本地        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.setProperty(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>,<span class="string">"true"</span>)</div></pre></td></tr></table></figure>- 原理  - 使用的是一个小而快的字节码工具ASM，生成代理类。因此，Java的动态语言特性其实就是ASM。  - ASM可以直接修改class二进制字节码。</code></pre><ul><li><p>Instrument动态代理</p><ul><li>Instrument是一个类似ASM的工具</li><li>原理是在将二进制字节码加载到JVM之前，篡改二进制字节码</li></ul></li><li><p>CGLIB动态代理（子类代理）</p><ul><li><p>局限</p><ul><li>不能对final修饰的类生成代理子类，但是ASM可以突破这种语法上的限制。</li></ul></li><li><p>原理</p><ul><li>底层也是使用ASM工具。</li></ul></li><li><p>使用步骤</p><ul><li><p>引入maven依赖</p>  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/cglib/cglib --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></li></ul></li></ul></li></ul><pre><code>- 编写一个需要被代理的类Example  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span>&#123;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">   System.out.println(<span class="string">"我是被代理对象！"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>- 编写代理逻辑（拦截的逻辑）  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyInterceptor implement MethodInterceptor &#123;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">        System.out.println(<span class="string">"这个是产生的代理对象："</span>+o.getClass().getName());    </div><div class="line">    Object invoke =methodProxy.invokeSuper(o,objects);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> invoke;</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Enhancer enhancer=<span class="keyword">new</span> Enhancer();</div><div class="line">enhancer.setSuperClass(Example.class);</div><div class="line">enhancer.setInterceptor(<span class="keyword">new</span> MyInterceptor());</div><div class="line">Example proxy=enhancer.create();</div><div class="line">proxy.action();</div></pre></td></tr></table></figure></code></pre><h3 id="常见案例"><a href="#常见案例" class="headerlink" title="常见案例"></a>常见案例</h3><ul><li>Spring AOP使用了JDK动态代理和CGLIB子类代理</li></ul><h3 id="疑问？"><a href="#疑问？" class="headerlink" title="疑问？"></a>疑问？</h3><ul><li><p>JDK动态代理中如果接口当中定义了多个方法，是否生成的代理类中这些方法是否都调用了InvocationHandler::invoke()方法？</p><ul><li>是的，可以通过查看生成代理类的反编译源代码可以知道，代理子类中所有的方法都调用了InvocationHandler::invoke()</li></ul></li></ul><h3 id="项目GitHub地址"><a href="#项目GitHub地址" class="headerlink" title="项目GitHub地址"></a>项目GitHub地址</h3><p>​    <a href="https://github.com/tokerr/designpatterns/tree/master/src/main/java/com/nyt/proxy" target="_blank" rel="external">https://github.com/tokerr/designpatterns/tree/master/src/main/java/com/nyt/proxy</a></p>]]></content>
     
@@ -136,9 +157,9 @@
     </summary>
     
     
-      <category term="java" scheme="https://tokerr.github.io/tags/java/"/>
-    
       <category term="jvm" scheme="https://tokerr.github.io/tags/jvm/"/>
+    
+      <category term="java" scheme="https://tokerr.github.io/tags/java/"/>
     
   </entry>
   
@@ -509,9 +530,9 @@ var key = generatePendingRequestKey(options);
     </summary>
     
     
-      <category term="java" scheme="https://tokerr.github.io/tags/java/"/>
-    
       <category term="jvm" scheme="https://tokerr.github.io/tags/jvm/"/>
+    
+      <category term="java" scheme="https://tokerr.github.io/tags/java/"/>
     
       <category term="javase" scheme="https://tokerr.github.io/tags/javase/"/>
     
@@ -548,31 +569,6 @@ var key = generatePendingRequestKey(options);
       <category term="Set" scheme="https://tokerr.github.io/tags/Set/"/>
     
       <category term="List" scheme="https://tokerr.github.io/tags/List/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>String类型两种创建对象的方式的内存分配</title>
-    <link href="https://tokerr.github.io/2017/06/04/String%E7%B1%BB%E5%9E%8B%E4%B8%A4%E7%A7%8D%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
-    <id>https://tokerr.github.io/2017/06/04/String类型两种创建对象的方式的内存分配/</id>
-    <published>2017-06-04T15:25:47.000Z</published>
-    <updated>2019-05-01T13:51:07.476Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一张图就可以看明白"><a href="#一张图就可以看明白" class="headerlink" title="一张图就可以看明白"></a>一张图就可以看明白</h3><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/String%E7%B1%BB%E5%9E%8B%E4%B8%A4%E7%A7%8D%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;一张图就可以看明白&quot;&gt;&lt;a href=&quot;#一张图就可以看明白&quot; class=&quot;headerlink&quot; title=&quot;一张图就可以看明白&quot;&gt;&lt;/a&gt;一张图就可以看明白&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.co
-      
-    
-    </summary>
-    
-    
-      <category term="java" scheme="https://tokerr.github.io/tags/java/"/>
-    
-      <category term="String" scheme="https://tokerr.github.io/tags/String/"/>
     
   </entry>
   
