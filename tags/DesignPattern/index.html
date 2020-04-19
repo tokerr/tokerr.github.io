@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: HDFS | 农永滔的博客</title>
+  <title>Tag: DesignPattern | 农永滔的博客</title>
   
   <meta name="keywords" content="hadoop,Spring,大数据,Java,nongyongtao,mybatis">
   
@@ -131,7 +131,7 @@
         <div class='l_main'>
             
     <script>
-        window.subData= { title:'标签 : HDFS'}
+        window.subData= { title:'标签 : DesignPattern'}
     </script>
 
 
@@ -142,29 +142,49 @@
     <section class="meta">
       
         <h2 class="title">
-            <a href="/2017/10/18/HDFS架构极其执行原理/">
+            <a href="/2020/04/19/单例模式（singleton）/">
                 
-                    HDFS架构及其执行原理
+                    单例模式还可以用枚举来实现吗？
                 
             </a>
         </h2>
         <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-10-18
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2020-04-19
         </time>
         
 
     </section>
 
     <section class="article typo">
-        <h2 id="一、前言："><a href="#一、前言：" class="headerlink" title="一、前言："></a>一、前言：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HDFS和YARN作为hadoop的核心，前者用于海量数据的存储，后者负责资源管理调度。本文先对HDFS，就个人的掌握的程度进行简单的概要和回顾。关于 YARN结构以及内部执行原理，以及后面内部各个组件如何相互协调工作，后面再进行探讨。</p>
-<h3 id="1-1、名词复习"><a href="#1-1、名词复习" class="headerlink" title="1.1、名词复习"></a>1.1、名词复习</h3><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）、YARN ——Yet Another Resource Negotiator（资源管理调度系统）<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）、HDFS——Hadoop Distributed File System（分布式文件系统）</p>
-<pre><code>内部主从结构
-•主节点，只有一个: namenode
-•从节点，有很多个: datanode
-</code></pre><p> <strong>namenode负责：</strong><br><br>
+        <h2 id="单例模式（singleton）"><a href="#单例模式（singleton）" class="headerlink" title="单例模式（singleton）"></a>单例模式（singleton）</h2><h2 id="一、什么是单例模式？"><a href="#一、什么是单例模式？" class="headerlink" title="一、什么是单例模式？"></a>一、什么是单例模式？</h2><ul>
+<li>确保内存当中一个类的实例对象只要一个</li>
+</ul>
+<h2 id="二、两种单例模式"><a href="#二、两种单例模式" class="headerlink" title="二、两种单例模式"></a>二、两种单例模式</h2><ul>
+<li><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><ul>
+<li><p>步骤</p>
+<ul>
+<li><p>在单例类中定义与自己类型相同的常量，并初始化</p>
+<ul>
+<li>private static final SingletonClass INSTANCE= new SingletonClass();</li>
+</ul>
+</li>
+<li><p>私有化单例类的构造方法</p>
+</li>
+<li>定义一个publish的getInstance方法，返回实例化的常量</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>在类初始化阶段就完成了单例对象的初始化</li>
+<li>不存在多线程安全问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
         
             <div class="readmore">
-                <a href="/2017/10/18/HDFS架构极其执行原理/" class="flat-box">
+                <a href="/2020/04/19/单例模式（singleton）/" class="flat-box">
                     <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
                     阅读全文
                 </a>
@@ -174,11 +194,9 @@
         
             <div class="full-width auto-padding tags">
                 
-                    <a href="/tags/hadoop/"><i class="fas fa-tag fa-fw"></i>&nbsp;hadoop</a>
+                    <a href="/tags/设计模式/"><i class="fas fa-tag fa-fw"></i>&nbsp;设计模式</a>
                 
-                    <a href="/tags/HDFS/"><i class="fas fa-tag fa-fw"></i>&nbsp;HDFS</a>
-                
-                    <a href="/tags/YARN/"><i class="fas fa-tag fa-fw"></i>&nbsp;YARN</a>
+                    <a href="/tags/DesignPattern/"><i class="fas fa-tag fa-fw"></i>&nbsp;DesignPattern</a>
                 
             </div>
         

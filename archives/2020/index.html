@@ -139,13 +139,13 @@
 <section class="post-list">
     
         <div class='post-wrapper'>
-            <article class="post reveal no-title">
+            <article class="post reveal ">
     <section class="meta">
       
         <h2 class="title">
             <a href="/2020/04/19/单例模式（singleton）/">
                 
-                    2020-04-19
+                    单例模式还可以用枚举来实现吗？
                 
             </a>
         </h2>
@@ -157,10 +157,10 @@
     </section>
 
     <section class="article typo">
-        <h2 id="单例模式（singleton）"><a href="#单例模式（singleton）" class="headerlink" title="单例模式（singleton）"></a>单例模式（singleton）</h2><h3 id="一、什么是单例模式？"><a href="#一、什么是单例模式？" class="headerlink" title="一、什么是单例模式？"></a>一、什么是单例模式？</h3><ul>
+        <h2 id="单例模式（singleton）"><a href="#单例模式（singleton）" class="headerlink" title="单例模式（singleton）"></a>单例模式（singleton）</h2><h2 id="一、什么是单例模式？"><a href="#一、什么是单例模式？" class="headerlink" title="一、什么是单例模式？"></a>一、什么是单例模式？</h2><ul>
 <li>确保内存当中一个类的实例对象只要一个</li>
 </ul>
-<h3 id="二、两种单例模式"><a href="#二、两种单例模式" class="headerlink" title="二、两种单例模式"></a>二、两种单例模式</h3><ul>
+<h2 id="二、两种单例模式"><a href="#二、两种单例模式" class="headerlink" title="二、两种单例模式"></a>二、两种单例模式</h2><ul>
 <li><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><ul>
 <li><p>步骤</p>
 <ul>
@@ -182,86 +182,24 @@
 </li>
 </ul>
 </li>
-<li><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><ul>
-<li><p>特点</p>
-<ul>
-<li>在第一次调用getInstance方法的时候才会初始化单例对象，这也是与‘饿汉式’的区别。</li>
 </ul>
-</li>
-<li><p>实现步骤</p>
-<ul>
-<li><p>单例类中定义一个与自己类型相同的静态变量，不初始化</p>
-<ul>
-<li>private static SIngletonClass INSTANCE;</li>
-</ul>
-</li>
-<li><p>同样需要私有化单例类的构造方法</p>
-</li>
-<li><p>实现getInstance方法</p>
-<ul>
-<li><h4 id="实现方式一"><a href="#实现方式一" class="headerlink" title="实现方式一"></a>实现方式一</h4><ul>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SIngletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">if</span>(INSTANCE == <span class="keyword">null</span>)&#123;</div><div class="line"> INSTANCE=<span class="keyword">new</span> SingletonClass();</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>  - 存在的问题
-
-      - 存在多线程安全的问题，可能两个线程分别得到不同的实例
-
-- #### 实现方式二：synchronized
-
-    - 在方式一的基础上，给getInstance方法加synchronized关键字
-    - 存在的问题
-
-        - 解决了方式一的多线程安全问题，但是会大大降低运行效率
-
-- #### 实现方式三
-
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SIngletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>( INSTANCE == <span class="keyword">null</span>)&#123;</div><div class="line"> <span class="keyword">synchronized</span>(SIngletonClass.class)&#123;</div><div class="line">  INSTANCE=<span class="keyword">new</span> SIngletonClass();</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-     - 缺陷：同样有多线程安全问题
-
-   - #### 实现方式四：双重判断加锁
-     1. 在方式三的基础上，在synchronized加锁之后，再次对INSTANCE做一次空判断，如果也为空，再初始化单例对象。
-     2. 需要使用volatile关键字修饰变量，防止JIT对指令进行重排序
-         - private static volatile SingletonClass INSTANCE;
-     3. 多线程安全的问题得以解决
-
-- #### 实现方式五：使用内部类的方式实现懒汉式
-
-  - 指导思想：
-
-    1. JVM“只对每个类加载一次”的原则，保证了多线程安全
-    2. JVM加载外部类时不会加载内部类，这样可以实现懒加载
-
-  - 代码实现
-
-    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span></span>&#123;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">SingletonClass</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonClass INSTANCE=<span class="keyword">new</span> SingletonClass();</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">return</span> InnerClass.INSTANCE;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-
-
-- #### 实现方式六：使用枚举类的方式实现懒汉式
-
-- 好处：
-
-  - 不仅可以解决多线程安全问题，还可以防止反序列化。想其他几种单例的实现方式，都是可以通过反射的方式再次创建实例的。（枚举类没有构造方法）
-  - 是最简单和安全的实现方式
-</code></pre><p>public static class InnerClass{<br>public static final SingletonClass INSTANCE=new SingletonClass();<br>} </p>
-<p>public static SingletonClass getInstance(){</p>
-<p>return InnerClass.INSTANCE;<br>}</p>
-<p>}</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SingletonClass&#123;</div><div class="line">INSTANCE;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>这里列出了7种单例的实现方式，并不是说一定要用哪一种，而是应该结合项目的情况，选择一种合适的实现方式。</p>
-
+        
+            <div class="readmore">
+                <a href="/2020/04/19/单例模式（singleton）/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
         
 
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/设计模式/"><i class="fas fa-tag fa-fw"></i>&nbsp;设计模式</a>
+                
+                    <a href="/tags/DesignPattern/"><i class="fas fa-tag fa-fw"></i>&nbsp;DesignPattern</a>
+                
+            </div>
         
     </section>
 </article>
@@ -443,7 +381,7 @@
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
         <div class='content pure'>
-            <a href="/tags/CGLIB/" style="font-size: 14px; color: #999">CGLIB</a> <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/设计模式/" style="font-size: 14px; color: #999">设计模式</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+            <a href="/tags/CGLIB/" style="font-size: 14px; color: #999">CGLIB</a> <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/DesignPattern/" style="font-size: 14px; color: #999">DesignPattern</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/设计模式/" style="font-size: 16.5px; color: #888">设计模式</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
         </div>
     </section>
 
