@@ -138,282 +138,6 @@
     <section class="meta">
       
         <h2 class="title">
-            <a href="/2017/06/04/String类型两种创建对象的方式的内存分配/">
-                
-                    String类型两种创建对象的方式的内存分配
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-06-04
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h3 id="一张图就可以看明白"><a href="#一张图就可以看明白" class="headerlink" title="一张图就可以看明白"></a>一张图就可以看明白</h3><p><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/String%E7%B1%BB%E5%9E%8B%E4%B8%A4%E7%A7%8D%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F.png" alt=""></p>
-
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
-                
-                    <a href="/tags/String/"><i class="fas fa-tag fa-fw"></i>&nbsp;String</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/06/04/以下代码创建了几个对象/">
-                
-                    以下代码创建了几个对象[转]
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-06-04
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <p>问题：以下代码创建了几个对象</p>
-<pre><code>String a,b,c;
-a = &quot;a&quot;;
-b = &quot;b&quot;;
-a = a+b;
-StringBuffer d = new StringBuffer(&quot;abc&quot;);
-d = d.append(&quot;567&quot;);
-</code></pre><p>先说一下我的答案: 我感觉是 3 个.<br>首先, 明确一下 创建对象 的具体含义. 按我的理解, 如果字符串是 字符常量, 那么这个字符串对象是在编译时候确定好的, 它是存放在常量池中的, 因此就不算是创建了一个字符串对象, 而如果有 <code>String b = new String(&quot;abc&quot;)</code>之类的操作, 那么可以认为是创建了字符串对象, 并与变量 b 关联.<br>根据上面的定义, 那么有: “a”, “b”, “abc”, “567” 都是常量, 放在常量池中的, 因此就不算是创建对象了.<br>那么来看一下代码:源码:<br>
-        
-            <div class="readmore">
-                <a href="/2017/06/04/以下代码创建了几个对象/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
-                
-                    <a href="/tags/String/"><i class="fas fa-tag fa-fw"></i>&nbsp;String</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/05/28/Java运行时异常和非运行时异常/">
-                
-                    Java运行时异常和非运行时异常
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-05-28
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h1 id="1-Java异常机制"><a href="#1-Java异常机制" class="headerlink" title="1.Java异常机制"></a>1.Java异常机制</h1><p>Java把异常当做对象来处理，并定义一个基类java.lang.Throwable作为所有异常的超类。Java中的异常分为两大类：错误Error和异常Exception，Java异常体系结构如下图所示：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/Java%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8%E5%92%8C%E9%9D%9E%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8/Image.jpg" alt=""></p>
-<h1 id="2-Throwable"><a href="#2-Throwable" class="headerlink" title="2.Throwable"></a>2.Throwable</h1><p>Throwable类是所有异常或错误的超类，它有两个子类：Error和Exception，分别表示错误和异常。其中异常Exception分为运行时异常(RuntimeException)和非运行时异常，也称之为不检查异常(Unchecked Exception)和检查异常(Checked Exception)。</p>
-<h1 id="3-Error"><a href="#3-Error" class="headerlink" title="3.Error"></a>3.Error</h1><p>一般是指java虚拟机相关的问题，如系统崩溃、虚拟机出错误、动态链接失败等，这种错误无法恢复或不可能捕获，将导致应用程序中断，通常应用程序无法处理这些错误，因此应用程序不应该捕获Error对象，也无须在其throws子句中声明该方法抛出任何Error或其子类。<br>
-        
-            <div class="readmore">
-                <a href="/2017/05/28/Java运行时异常和非运行时异常/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
-                
-                    <a href="/tags/exception/"><i class="fas fa-tag fa-fw"></i>&nbsp;exception</a>
-                
-                    <a href="/tags/异常/"><i class="fas fa-tag fa-fw"></i>&nbsp;异常</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/05/07/mybatis连接oracle执行sql语句出现ORA-00904-invalid-identifier/">
-                
-                    mybatis连接oracle执行sql语句出现ORA-00904: invalid identifier
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-05-07
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h1 id="一、总结"><a href="#一、总结" class="headerlink" title="一、总结"></a>一、总结</h1><p>使用mybatis连接oracle数据库进行查询，最好确保<strong>表命全大写</strong>，否者会出现ORA-00904: invalid identifier的问题</p>
-<p>注：本人使用的mybatis版本是3.0.5</p>
-<h1 id="二、问题描述："><a href="#二、问题描述：" class="headerlink" title="二、问题描述："></a>二、问题描述：</h1><p> 我使用ibator工具产生的代码，有一个Dao的测试类，但是一执行就出现了ORA-00904: invalid identifier，如图：<br><img src="https://raw.githubusercontent.com/tokerr/markdownImage/master/mybatis%E8%BF%9E%E6%8E%A5oracle%E6%89%A7%E8%A1%8Csql%E8%AF%AD%E5%8F%A5%E5%87%BA%E7%8E%B0ORA-00904-invalid-identifier/Image1.png" alt=""><br>
-        
-            <div class="readmore">
-                <a href="/2017/05/07/mybatis连接oracle执行sql语句出现ORA-00904-invalid-identifier/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
-                
-                    <a href="/tags/mybatis/"><i class="fas fa-tag fa-fw"></i>&nbsp;mybatis</a>
-                
-                    <a href="/tags/oracle/"><i class="fas fa-tag fa-fw"></i>&nbsp;oracle</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/05/06/关于使用ibator工具连接oracle数据库生成代码的使用问题/">
-                
-                    使用ibator无法根据oracle数据库中的表结构产生代码[解决方法]
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-05-06
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h1 id="一、总结"><a href="#一、总结" class="headerlink" title="一、总结"></a>一、总结</h1><p><strong>使用ibator根据oracle中的表结构生成代码时，一定要确保每张表的表命全大写，否则生成失败</strong>     </p>
-<h1 id="二、问题描述"><a href="#二、问题描述" class="headerlink" title="二、问题描述"></a>二、问题描述</h1><p>想说的已经在上面描述出来了。下面描述问题的由来已经解决的过程：</p>
-<p>就是下面这个工具，我已经集成到了Myeclipse当中<br>
-        
-            <div class="readmore">
-                <a href="/2017/05/06/关于使用ibator工具连接oracle数据库生成代码的使用问题/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
-                
-                    <a href="/tags/mybatis/"><i class="fas fa-tag fa-fw"></i>&nbsp;mybatis</a>
-                
-                    <a href="/tags/oracle/"><i class="fas fa-tag fa-fw"></i>&nbsp;oracle</a>
-                
-                    <a href="/tags/ibator/"><i class="fas fa-tag fa-fw"></i>&nbsp;ibator</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
-            <a href="/2017/05/06/ORA-12541-TNS-无监听程序/">
-                
-                    ORA-12541:TNS:无监听程序
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-05-06
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>这两天在做毕业设计，项目用到的是oracle数据库，由于之前用的都是mysql，oracle数据库的应用比较少。于是莫名奇妙的出现了个‘ORA-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务’，也是折腾了两天，无果，今天接着是‘ORA-12541:TNS:无监听程序’，在windows系统的cmd上不使用实例名连接倒是可以登录，但是无法进行正常的查询操作。今天按照网上某篇博客的教程，居然把这个问题解决了，关键的一步是 启动tnslsnr，然后问题就解决了。</p>
-<p>其实在今天电脑开始之后，我直接把360安全卫士关闭了，不排除oracle在开机 的时候某些服务被360拦截关闭的情况。</p>
-<h2 id="二、附上cmd的操作日志"><a href="#二、附上cmd的操作日志" class="headerlink" title="二、附上cmd的操作日志"></a>二、附上cmd的操作日志</h2><pre><code>C:\Users\Administrator&gt;sqlplus / as sysdba
-</code></pre>
-        
-            <div class="readmore">
-                <a href="/2017/05/06/ORA-12541-TNS-无监听程序/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/数据库/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据库</a>
-                
-                    <a href="/tags/Oracle/"><i class="fas fa-tag fa-fw"></i>&nbsp;Oracle</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-      
-        <h2 class="title">
             <a href="/2017/05/05/序列化和反序列化的简单理解/">
                 
                     序列化和反序列化的简单理解
@@ -606,6 +330,91 @@ d = d.append(&quot;567&quot;);
 
         </div>
     
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+      
+        <h2 class="title">
+            <a href="/2017/04/25/java-util-Date转java-sql-Date丢失时间问题/">
+                
+                    java.util.Date转java.sql.Date丢失时间问题
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-04-25
+        </time>
+        
+
+    </section>
+
+    <section class="article typo">
+        <h3 id="一-引发我写这篇博客的原因（问题描述）："><a href="#一-引发我写这篇博客的原因（问题描述）：" class="headerlink" title="一.引发我写这篇博客的原因（问题描述）："></a>一.引发我写这篇博客的原因（问题描述）：</h3><p>由于项目使用的是springmvc+mybatis，前期的开发使用到了ibator这个dao层代码生成工具(ps:后来因为老板的原因，禁用了这个工具，但是以前的老代码还有在使用这个工具生成的代码)，其中提供的Example极大的方便开发是进行数据的各种查询的工作，但是使用过程出现了一些问题。<br>在对日期时间类型的字段进行筛选的时候不能精确到时分秒，原因是Example里面默认的是将util的Date 转成 sql的Date，以至丢失时间 查询不能精确到时分秒<br><img src="http://i.imgur.com/gvPzID2.png" alt=""><br>
+        
+            <div class="readmore">
+                <a href="/2017/04/25/java-util-Date转java-sql-Date丢失时间问题/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/java/"><i class="fas fa-tag fa-fw"></i>&nbsp;java</a>
+                
+                    <a href="/tags/日期转换/"><i class="fas fa-tag fa-fw"></i>&nbsp;日期转换</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+      
+        <h2 class="title">
+            <a href="/2017/04/05/简单易懂的更换hexo主题的教程/">
+                
+                    简单易懂的更换hexo主题的教程
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2017-04-05
+        </time>
+        
+
+    </section>
+
+    <section class="article typo">
+        <h3 id="以Smackdown为例：http-blog-smackdown-gebilaowu-cn"><a href="#以Smackdown为例：http-blog-smackdown-gebilaowu-cn" class="headerlink" title="以Smackdown为例：http://blog.smackdown.gebilaowu.cn/"></a>以Smackdown为例：<a href="http://blog.smackdown.gebilaowu.cn/">http://blog.smackdown.gebilaowu.cn/</a></h3><h2 id="一、预览的页面"><a href="#一、预览的页面" class="headerlink" title="一、预览的页面"></a>一、预览的页面</h2><p><img src="http://i.imgur.com/FnrgLQ1.png" alt=""></p>
+<h2 id="二、到github中找到hexo主题的demo"><a href="#二、到github中找到hexo主题的demo" class="headerlink" title="二、到github中找到hexo主题的demo"></a>二、到github中找到hexo主题的demo</h2><p>一般的都会附带上github的demo地址，顺便附录上hexo官方的主题列表页面，大家可以在里面挑一款自己喜欢的(<a href="https://hexo.io/themes/)，这个官网的主题连接在_config.yml配置文件的themes属性配置的上面有。">https://hexo.io/themes/)，这个官网的主题连接在_config.yml配置文件的themes属性配置的上面有。</a><br>
+        
+            <div class="readmore">
+                <a href="/2017/04/05/简单易懂的更换hexo主题的教程/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/hexo-主题-更换/"><i class="fas fa-tag fa-fw"></i>&nbsp;hexo 主题 更换</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
 </section>
 
 
@@ -620,14 +429,8 @@ d = d.append(&quot;567&quot;);
                 </a>
             
             <p class="current">
-                3 / 4
+                3 / 3
             </p>
-            
-                <a class="next" rel="next" href="/page/4/">
-                    <section class="post next">
-                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </section>
-                </a>
             
 
         </div>
@@ -699,7 +502,7 @@ d = d.append(&quot;567&quot;);
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
         <div class='content pure'>
-            <a href="/tags/CGLIB/" style="font-size: 14px; color: #999">CGLIB</a> <a href="/tags/Collection/" style="font-size: 14px; color: #999">Collection</a> <a href="/tags/DesignPattern/" style="font-size: 16.5px; color: #888">DesignPattern</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/List/" style="font-size: 14px; color: #999">List</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Set/" style="font-size: 14px; color: #999">Set</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hbase/" style="font-size: 14px; color: #999">hbase</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/java虚拟机/" style="font-size: 14px; color: #999">java虚拟机</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jsp/" style="font-size: 14px; color: #999">jsp</a> <a href="/tags/jvm/" style="font-size: 16.5px; color: #888">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 19px; color: #777">mysql</a> <a href="/tags/mysql索引优化/" style="font-size: 14px; color: #999">mysql索引优化</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 16.5px; color: #888">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/升序，降序/" style="font-size: 14px; color: #999">升序，降序</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #888">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/设计模式/" style="font-size: 16.5px; color: #888">设计模式</a> <a href="/tags/集合/" style="font-size: 14px; color: #999">集合</a>
+            <a href="/tags/CGLIB/" style="font-size: 14px; color: #999">CGLIB</a> <a href="/tags/DesignPattern/" style="font-size: 16.5px; color: #888">DesignPattern</a> <a href="/tags/HDFS/" style="font-size: 14px; color: #999">HDFS</a> <a href="/tags/MapReducer/" style="font-size: 14px; color: #999">MapReducer</a> <a href="/tags/Oracle/" style="font-size: 14px; color: #999">Oracle</a> <a href="/tags/Shuffle/" style="font-size: 14px; color: #999">Shuffle</a> <a href="/tags/String/" style="font-size: 14px; color: #999">String</a> <a href="/tags/YARN/" style="font-size: 14px; color: #999">YARN</a> <a href="/tags/ajax/" style="font-size: 14px; color: #999">ajax</a> <a href="/tags/cluster/" style="font-size: 14px; color: #999">cluster</a> <a href="/tags/cookie/" style="font-size: 14px; color: #999">cookie</a> <a href="/tags/exception/" style="font-size: 14px; color: #999">exception</a> <a href="/tags/google/" style="font-size: 14px; color: #999">google</a> <a href="/tags/gson/" style="font-size: 14px; color: #999">gson</a> <a href="/tags/hadoop/" style="font-size: 21.5px; color: #666">hadoop</a> <a href="/tags/hexo-主题-更换/" style="font-size: 14px; color: #999">hexo 主题 更换</a> <a href="/tags/hibernate-validation/" style="font-size: 14px; color: #999">hibernate-validation</a> <a href="/tags/ibator/" style="font-size: 14px; color: #999">ibator</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/jquery/" style="font-size: 14px; color: #999">jquery</a> <a href="/tags/json/" style="font-size: 14px; color: #999">json</a> <a href="/tags/jvm/" style="font-size: 14px; color: #999">jvm</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/mybatis/" style="font-size: 19px; color: #777">mybatis</a> <a href="/tags/mysql/" style="font-size: 16.5px; color: #888">mysql</a> <a href="/tags/oracle/" style="font-size: 16.5px; color: #888">oracle</a> <a href="/tags/session/" style="font-size: 14px; color: #999">session</a> <a href="/tags/spring/" style="font-size: 14px; color: #999">spring</a> <a href="/tags/springmvc/" style="font-size: 14px; color: #999">springmvc</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/sqoop/" style="font-size: 14px; color: #999">sqoop</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #999">tomcat</a> <a href="/tags/validation/" style="font-size: 14px; color: #999">validation</a> <a href="/tags/vmware/" style="font-size: 14px; color: #999">vmware</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a> <a href="/tags/临时表/" style="font-size: 14px; color: #999">临时表</a> <a href="/tags/事务/" style="font-size: 14px; color: #999">事务</a> <a href="/tags/事务隔离级别/" style="font-size: 14px; color: #999">事务隔离级别</a> <a href="/tags/多线程/" style="font-size: 14px; color: #999">多线程</a> <a href="/tags/异常/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/数据库/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/日期转换/" style="font-size: 14px; color: #999">日期转换</a> <a href="/tags/线程池/" style="font-size: 14px; color: #999">线程池</a> <a href="/tags/设计模式/" style="font-size: 16.5px; color: #888">设计模式</a>
         </div>
     </section>
 
