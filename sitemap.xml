@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tokerr.github.io/2020/05/16/Java%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E5%92%8C%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B/</loc>
+    
+    <lastmod>2020-05-16T06:20:26.068Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tokerr.github.io/2020/02/16/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor/</loc>
     
     <lastmod>2020-04-19T07:29:12.832Z</lastmod>
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://tokerr.github.io/2017/12/17/%E8%99%9A%E6%8B%9F%E6%9C%BAhost-only%E4%B8%8B%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%85%B1%E4%BA%AB%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://tokerr.github.io/2017/04/05/%E7%AE%80%E5%8D%95%E6%98%93%E6%87%82%E7%9A%84%E6%9B%B4%E6%8D%A2hexo%E4%B8%BB%E9%A2%98%E7%9A%84%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2019-05-01T13:51:07.481Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tokerr.github.io/2017/04/05/%E7%AE%80%E5%8D%95%E6%98%93%E6%87%82%E7%9A%84%E6%9B%B4%E6%8D%A2hexo%E4%B8%BB%E9%A2%98%E7%9A%84%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://tokerr.github.io/2017/12/17/%E8%99%9A%E6%8B%9F%E6%9C%BAhost-only%E4%B8%8B%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%85%B1%E4%BA%AB%E7%BD%91%E7%BB%9C/</loc>
     
     <lastmod>2019-05-01T13:51:07.481Z</lastmod>
     
@@ -86,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://tokerr.github.io/2017/10/25/sqoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-05-01T13:51:07.478Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tokerr.github.io/2017/04/26/sql%E8%AF%AD%E5%8F%A5%E4%BD%BF%E7%94%A8%E4%B8%B4%E6%97%B6%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%A8%A1%E6%8B%9F%E6%9E%84%E5%BB%BA%E4%B8%80%E5%BC%A0%E4%B8%B4%E6%97%B6%E8%A1%A8-%E7%94%A8%E4%BA%8E%E4%B8%80%E6%AC%A1%E6%80%A7%E6%9F%A5%E8%AF%A2%E7%9A%84/</loc>
     
     <lastmod>2019-05-01T13:51:07.478Z</lastmod>
@@ -100,7 +100,14 @@
   </url>
   
   <url>
-    <loc>https://tokerr.github.io/2017/05/07/mybatis%E8%BF%9E%E6%8E%A5oracle%E6%89%A7%E8%A1%8Csql%E8%AF%AD%E5%8F%A5%E5%87%BA%E7%8E%B0ORA-00904-invalid-identifier/</loc>
+    <loc>https://tokerr.github.io/2017/10/25/sqoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-05-01T13:51:07.478Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tokerr.github.io/2017/05/02/hibernate-validation%E5%AE%9E%E7%8E%B0%E5%90%8E%E5%8F%B0%E6%A0%A1%E9%AA%8C/</loc>
     
     <lastmod>2019-05-01T13:51:07.477Z</lastmod>
     
@@ -114,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://tokerr.github.io/2017/05/02/hibernate-validation%E5%AE%9E%E7%8E%B0%E5%90%8E%E5%8F%B0%E6%A0%A1%E9%AA%8C/</loc>
+    <loc>https://tokerr.github.io/2017/05/07/mybatis%E8%BF%9E%E6%8E%A5oracle%E6%89%A7%E8%A1%8Csql%E8%AF%AD%E5%8F%A5%E5%87%BA%E7%8E%B0ORA-00904-invalid-identifier/</loc>
     
     <lastmod>2019-05-01T13:51:07.477Z</lastmod>
     

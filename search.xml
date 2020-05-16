@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>Java对象内部布局和锁升级过程</title>
+      <link href="/2020/05/16/Java%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E5%92%8C%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B/"/>
+      <url>/2020/05/16/Java%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E5%92%8C%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p>​    文章从Java中熟悉的synchronized关键字入手，回答JVM内部，是如何实现加锁操作的？以及锁不同的分类？不同锁之间如何转换？锁的优缺点。重点讲解Java对象的内存布局和锁升级的过程。</p><a id="more"></a><p><img src="https://raw.githubusercontent.com/tokerr/pic/master/img/synchronized.png" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>单例模式还可以用枚举来实现吗？</title>
       <link href="/2020/04/19/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88singleton%EF%BC%89/"/>
       <url>/2020/04/19/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88singleton%EF%BC%89/</url>
@@ -95,9 +106,9 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> jvm </tag>
+            
+            <tag> java </tag>
             
         </tags>
       
@@ -476,11 +487,11 @@
       
         <tags>
             
+            <tag> mybatis </tag>
+            
             <tag> mysql </tag>
             
             <tag> 临时表 </tag>
-            
-            <tag> mybatis </tag>
             
         </tags>
       
